@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_150859) do
+ActiveRecord::Schema.define(version: 2022_01_23_082758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,26 @@ ActiveRecord::Schema.define(version: 2022_01_22_150859) do
     t.bigint "user_id", null: false
     t.index ["business_id"], name: "index_businesses_users_on_business_id"
     t.index ["user_id"], name: "index_businesses_users_on_user_id"
+  end
+
+  create_table "color_palettes", force: :cascade do |t|
+    t.string "first"
+    t.string "second"
+    t.string "third"
+    t.string "fourth"
+    t.string "fifth"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "font_pairs", force: :cascade do |t|
+    t.string "link_tag_href"
+    t.string "primary"
+    t.string "primary_backup"
+    t.string "secondary"
+    t.string "secondary_back_up"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
