@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_150859) do
+ActiveRecord::Schema.define(version: 2022_01_23_084451) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "businesses", force: :cascade do |t|
@@ -28,6 +29,37 @@ ActiveRecord::Schema.define(version: 2022_01_22_150859) do
     t.index ["user_id"], name: "index_businesses_users_on_user_id"
   end
 
+  create_table "color_palettes", force: :cascade do |t|
+    t.string "first"
+    t.string "second"
+    t.string "third"
+    t.string "fourth"
+    t.string "fifth"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "font_pairs", force: :cascade do |t|
+    t.string "link_tag_href"
+    t.string "primary"
+    t.string "primary_backup"
+    t.string "secondary"
+    t.string "secondary_back_up"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "color_palette_id", null: false
+    t.bigint "font_pair_id", null: false
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_sites_on_business_id"
+    t.index ["color_palette_id"], name: "index_sites_on_color_palette_id"
+    t.index ["font_pair_id"], name: "index_sites_on_font_pair_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,4 +72,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_150859) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "sites", "businesses"
+  add_foreign_key "sites", "color_palettes"
+  add_foreign_key "sites", "font_pairs"
 end
