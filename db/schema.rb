@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_090932) do
+ActiveRecord::Schema.define(version: 2022_01_23_195531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 2022_01_23_090932) do
     t.index ["site_id"], name: "index_pages_on_site_id"
   end
 
+  create_table "sections", force: :cascade do |t|
+    t.bigint "page_id", null: false
+    t.string "content"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["page_id"], name: "index_sections_on_page_id"
+  end
+
   create_table "sites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "color_palette_id", null: false
     t.bigint "font_pair_id", null: false
@@ -80,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_01_23_090932) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "sections", "pages"
   add_foreign_key "sites", "businesses"
   add_foreign_key "sites", "color_palettes"
   add_foreign_key "sites", "font_pairs"
