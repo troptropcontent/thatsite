@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_060733) do
+ActiveRecord::Schema.define(version: 2022_01_25_062147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 2022_01_25_060733) do
     t.string "secondary_back_up"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.bigint "business_id", null: false
+    t.string "address_full", null: false
+    t.string "address_complement"
+    t.string "address_zipcode", null: false
+    t.string "addresse_city", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_offices_on_business_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -100,6 +112,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_060733) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "offices", "businesses"
   add_foreign_key "sections", "pages"
   add_foreign_key "sites", "businesses"
   add_foreign_key "sites", "color_palettes"
