@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_062147) do
+ActiveRecord::Schema.define(version: 2022_01_25_064012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "business_hours", force: :cascade do |t|
+    t.bigint "office_id", null: false
+    t.integer "weekday", null: false
+    t.time "opens_at", null: false
+    t.time "closes_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["office_id"], name: "index_business_hours_on_office_id"
+  end
 
   create_table "businesses", force: :cascade do |t|
     t.string "name"
@@ -112,6 +122,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_062147) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "business_hours", "offices"
   add_foreign_key "offices", "businesses"
   add_foreign_key "sections", "pages"
   add_foreign_key "sites", "businesses"
