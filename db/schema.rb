@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_195531) do
+ActiveRecord::Schema.define(version: 2022_01_25_060733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(version: 2022_01_23_195531) do
     t.index ["font_pair_id"], name: "index_sites_on_font_pair_id"
   end
 
+  create_table "team_members", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "role", null: false
+    t.string "email"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_team_members_on_business_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -93,4 +104,5 @@ ActiveRecord::Schema.define(version: 2022_01_23_195531) do
   add_foreign_key "sites", "businesses"
   add_foreign_key "sites", "color_palettes"
   add_foreign_key "sites", "font_pairs"
+  add_foreign_key "team_members", "businesses"
 end
