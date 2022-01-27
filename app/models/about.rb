@@ -1,3 +1,3 @@
 class About < Page
-    include IsUniqPage 
+    include IsDefaultPage 
 end
