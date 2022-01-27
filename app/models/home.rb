@@ -1,3 +1,3 @@
 class Home < Page
-    include IsUniqPage
+    include IsDefaultPage
 end
