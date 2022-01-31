@@ -3,6 +3,6 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :sites, only: [:show] do
-    get '/:name', to: 'page#show'
+    get '/:name', to: 'page#show', as: :page_show
   end
 end
