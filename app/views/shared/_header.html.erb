@@ -1,7 +1,7 @@
-<div class="header">
+<div class="header first">
   <a href=<%= request.original_url.gsub(/[^\/]+$/, "") %> class="logo">CompanyLogo</a>
   <div class="header-right">
-    <a class="active" href=<%= request.original_url.gsub(/[^\/]+$/, "home") %>>Home</a>
+    <a href=<%= request.original_url.gsub(/[^\/]+$/, "home") %>>Home</a>
     <a href=<%= request.original_url.gsub(/[^\/]+$/, "contact") %>>Contact</a>
     <a href=<%= request.original_url.gsub(/[^\/]+$/, "about") %>>About</a>
   </div>
