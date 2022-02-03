@@ -15,7 +15,16 @@
       }
 
       .secondary_font {
-        font-family: <%= @page.site.font_pair.secondary %>, <%= @page.site.font_pair.secondary_back_up %>;
+        font-family: '<%= @page.site.font_pair.secondary %>', <%= @page.site.font_pair.secondary_back_up %>;
+      }
+
+
+      body {
+        font-family: '<%= @page.site.font_pair.secondary %>', <%= @page.site.font_pair.secondary_back_up %>; 
+      }
+
+      h1 {
+        font-family: '<%= @page.site.font_pair.primary %>', <%= @page.site.font_pair.primary_backup %>;
       }
   
       .first {
@@ -37,12 +46,19 @@
       .fifth {
         background-color: #<%= @page.site.color_palette.fifth %>
       }   
+
+      .header a:hover {
+        background-color: #<%= @page.site.color_palette.third %>;
+        color: #<%= @page.site.color_palette.second %>;
+      }
+
     </style>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= render "shared/font_and_color_summary" unless Rails.env.production?%>
+    <%= render "shared/header"%>
     <%= yield %>
   </body>
 </html>
