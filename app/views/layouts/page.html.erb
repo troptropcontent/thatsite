@@ -10,6 +10,7 @@
     <link href=<%= @page.site.font_pair.link_tag_href %> rel="stylesheet">
     <%= stylesheet_link_tag "page", "data-turbo-track": "reload" %>
     <style>
+
       .primary_font {
         font-family: '<%= @page.site.font_pair.primary %>', <%= @page.site.font_pair.primary_backup %>;
       }
@@ -21,39 +22,60 @@
 
       body {
         font-family: '<%= @page.site.font_pair.secondary %>', <%= @page.site.font_pair.secondary_back_up %>; 
+        background-color: #<%= @page.site.color_palette.second %>
       }
 
       h1 {
         font-family: '<%= @page.site.font_pair.primary %>', <%= @page.site.font_pair.primary_backup %>;
       }
+
+      .c-first {
+        color: #<%= @page.site.color_palette.first %>
+      }
+
+      .c-second {
+        color: #<%= @page.site.color_palette.second %>
+      }
+
+      .c-third {
+        color: #<%= @page.site.color_palette.third %>
+      }
+
+      .c-fourth {
+        color: #<%= @page.site.color_palette.fourth %>
+      }
+
+      .c-fifth {
+        color: #<%= @page.site.color_palette.fifth %>
+      }  
   
-      .first {
+     .b-first {
         background-color: #<%= @page.site.color_palette.first %>
       }
 
-      .second {
+     .b-second {
         background-color: #<%= @page.site.color_palette.second %>
       }
 
-      .third {
+     .b-third {
         background-color: #<%= @page.site.color_palette.third %>
       }
 
-      .fourth {
+     .b-fourth {
         background-color: #<%= @page.site.color_palette.fourth %>
       }
 
-      .fifth {
+     .b-fifth {
         background-color: #<%= @page.site.color_palette.fifth %>
       }   
 
       .header a {
-        color: #<%= @page.site.color_palette.third %>;
+        color: #<%= @page.site.color_palette.first %>;
       }
 
       .header a:hover {
-        background-color: #<%= @page.site.color_palette.third %>;
-        color: #<%= @page.site.color_palette.first %>;
+        background-color: #<%= @page.site.color_palette.first %>;
+        color: #<%= @page.site.color_palette.second %>;
       }
 
     </style>

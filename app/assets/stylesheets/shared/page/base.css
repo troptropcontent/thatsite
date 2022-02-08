@@ -2,3 +2,9 @@
     display: flex;
     justify-content: center;
 }
+
+.banner {
+    padding: 60px;
+    text-align: center;
+    font-size: 30px;
+  }

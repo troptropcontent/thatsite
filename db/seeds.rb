@@ -13,6 +13,15 @@ site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pa
 contact = FactoryBot.create(:contact, site: site)
 home = FactoryBot.create(:home, site: site)
 about = FactoryBot.create(:about, site: site)
+banner_title = FactoryBot.create(:section, page: home, name: "banner_title")
+banner_text = FactoryBot.create(:section, page: home, name: "banner_text")
+
+
+
+
+
+
+
 
 color_palette = FactoryBot.create(
     :color_palette,

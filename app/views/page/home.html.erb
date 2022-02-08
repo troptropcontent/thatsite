@@ -1,1 +1,18 @@
-<h1>Hello from the home page of the site <%= @page.site.id %> </h1>
+<div class="banner b-first c-second">
+  <h1><%= @page.sections.find_by(name: "banner_title").content %></h1>
+  <p><%= @page.sections.find_by(name: "banner_text").content %></p>
+</div>
+<div class="banner">
+  <p><%= @page.sections.find_by(name: "what_we_believe_in_top").content %></p>
+  <h3><%= @page.sections.find_by(name: "what_we_believe_in_bottom").content %></h1>
+</div>
+<div class="banner">
+  <div class="container">
+    <div>
+    </div>
+    <div>
+        <div class="image">
+        </div>
+    </div>
+  </div>
+</div>
