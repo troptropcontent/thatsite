@@ -1,4 +1,4 @@
 class Contact < Page
-    include IsUniqPage
+    include IsDefaultPage
     
 end
