@@ -1,1 +1,36 @@
-<h1>Hello from the home page of the site <%= @page.site.id %> </h1>
+<div class="banner b-first c-second">
+  <h1><%= @page.sections.find_by(name: "banner_title").content %></h1>
+  <p><%= @page.sections.find_by(name: "banner_text").content %></p>
+</div>
+<div class="banner">
+  <p><%= @page.sections.find_by(name: "what_we_believe_in_top").content %></p>
+  <h3><%= @page.sections.find_by(name: "what_we_believe_in_bottom").content %></h1>
+</div>
+<div class="banner">
+  <div class="grid">
+    <div class="grid-column-1">
+        <p><%= @page.sections.find_by(name: "about_title").content %></p>
+        <h3><%= @page.sections.find_by(name: "about_short_description").content %></h1>
+    </div>
+    <div class="grid-column-2 b-first">
+        <div class="image">
+        </div>
+    </div>
+  </div>
+</div>
+<div class="banner">
+  <div class="grid">
+    <div class="grid-column-1 b-first">
+        <div class="image">
+        </div>
+    </div>
+    <div class="grid-column-2">
+        <p><%= @page.sections.find_by(name: "what_we_do_title").content %></p>
+        <h3><%= @page.sections.find_by(name: "what_we_do_description").content %></h1>
+    </div>
+  </div>
+</div>
+<div class="banner b-first c-second">
+  <h1><%= @page.sections.find_by(name: "cta_title").content %></h1>
+  <a href=# class="btn b-second c-first"><%= @page.sections.find_by(name: "cta_btn").content %></p>
+</div>
