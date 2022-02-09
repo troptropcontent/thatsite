@@ -25,11 +25,11 @@ banner_text = FactoryBot.create(:section, page: home, name: "banner_text")
 
 color_palette = FactoryBot.create(
     :color_palette,
-    first: "e63946",
-    second: "f1faee",
-    third: "a8dadc",
-    fourth: "457b9d",
-    fifth: "1d3557"
+    first: "284b63ff",
+    second: "ffffffff",
+    third: "d9d9d9ff",
+    fourth: "3c6e71ff",
+    fifth: "353535ff"
 )
 font_pair = FactoryBot.create(
     :font_pair,
