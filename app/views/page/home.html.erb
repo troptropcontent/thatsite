@@ -8,11 +8,12 @@
 </div>
 <div class="banner">
   <div class="grid">
-    <div class="grid-column-1">
+    <div>
         <p><%= @page.sections.find_by(name: "about_title").content %></p>
         <h3><%= @page.sections.find_by(name: "about_short_description").content %></h1>
+        <a href=# class="btn b-first c-second">En savoir plus</a>
     </div>
-    <div class="grid-column-2 b-first">
+    <div class="b-first">
         <div class="image">
         </div>
     </div>
@@ -20,17 +21,18 @@
 </div>
 <div class="banner">
   <div class="grid">
-    <div class="grid-column-1 b-first">
+    <div class="b-first">
         <div class="image">
         </div>
     </div>
-    <div class="grid-column-2">
+    <div>
         <p><%= @page.sections.find_by(name: "what_we_do_title").content %></p>
         <h3><%= @page.sections.find_by(name: "what_we_do_description").content %></h1>
+        <a href=# class="btn b-first c-second">En savoir plus</a>
     </div>
   </div>
 </div>
 <div class="banner b-first c-second">
   <h1><%= @page.sections.find_by(name: "cta_title").content %></h1>
-  <a href=# class="btn b-second c-first"><%= @page.sections.find_by(name: "cta_btn").content %></p>
+  <a href=# class="btn b-second c-first"><%= @page.sections.find_by(name: "cta_btn").content %></a>
 </div>
