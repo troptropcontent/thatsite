@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :color_palette do
-    first { "264653" }
-    second { "2a9d8f" }
-    third { "e9c46a" }
-    fourth { "f4a261" }
-    fifth { "e76f51" }
+    first { "e63946" }
+    second { "f1faee" }
+    third { "a8dadc" }
+    fourth { "457b9d" }
+    fifth { "1d3557" }
   end
 end
