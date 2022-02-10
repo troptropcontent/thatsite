@@ -9,9 +9,9 @@
 <div class="banner">
   <div class="grid">
     <div>
-        <p><%= @page.sections.find_by(name: "about_title").content %></p>
-        <h3><%= @page.sections.find_by(name: "about_short_description").content %></h1>
-        <a href=# class="btn b-first c-second">En savoir plus</a>
+        <p><%= @page.sections.find_by(name: "what_we_do_title").content %></p>
+        <h3><%= @page.sections.find_by(name: "what_we_do_description").content %></h1>
+        <a href=<%= request.original_url.gsub(/[^\/]+$/, "about")%> class="btn b-first c-second">En savoir plus</a>
     </div>
     <div class="b-first">
         <div class="image">
@@ -26,9 +26,9 @@
         </div>
     </div>
     <div>
-        <p><%= @page.sections.find_by(name: "what_we_do_title").content %></p>
-        <h3><%= @page.sections.find_by(name: "what_we_do_description").content %></h1>
-        <a href=# class="btn b-first c-second">En savoir plus</a>
+        <p><%= @page.sections.find_by(name: "about_title").content %></p>
+        <h3><%= @page.sections.find_by(name: "about_short_description").content %></h1>
+        <a href=<%= request.original_url.gsub(/[^\/]+$/, "team")%> class="btn b-first c-second">En savoir plus</a>
     </div>
   </div>
 </div>
