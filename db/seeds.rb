@@ -6,41 +6,60 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-color_palette = FactoryBot.create(:color_palette)
-font_pair = FactoryBot.create(:font_pair)
-business = FactoryBot.create(:business)
-site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
-contact = FactoryBot.create(:contact, site: site)
-home = FactoryBot.create(:home, site: site)
-about = FactoryBot.create(:about, site: site)
-banner_title = FactoryBot.create(:section, page: home, name: "banner_title")
-banner_text = FactoryBot.create(:section, page: home, name: "banner_text")
+HOME_PAGE_DEFAULT_SECTIONS = {
+    "banner_title"=>"Votre Site Web",             
+    "banner_text"=>"En quelques questions c'est tout !",
+    "what_we_believe_in_bottom"=>"Nous souhaiter donner a chaque entreprise la possibilite d'etre visible sur internet en quelques minutes",
+    "what_we_believe_in_top"=>"Notre vision",     
+    "about_title"=>"Qui sommes nous",             
+    "about_short_description"=>"Nous sommes une equipe de passionnés de design et de choses bien faites. Chaque commerce, chaque entreprise a droit a la visibilite qu'il mérite",
+    "what_we_do_description"=>                    
+    "Nous avons mis au point une solution qui, se base de vos reponse a une serie de question, construit en direct un site internet. Choisissez parmis nos palettes de couleurs et nos polices libres pour obtenir un site unique et repondez a nos questions, nous nous chargeons du reste.",
+    "what_we_do_title"=>"Que faisons nous",       
+    "cta_title"=>"C'est parti",                   
+    "cta_btn"=>"Démarrer le formulaire"
+}
 
+unless Site.count > 0 
 
+    color_palette = FactoryBot.create(:color_palette)
+    font_pair = FactoryBot.create(:font_pair)
+    business = FactoryBot.create(:business)
+    site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
+    contact = FactoryBot.create(:contact, site: site)
+    home = FactoryBot.create(:home, site: site)
+    about = FactoryBot.create(:about, site: site)
+    banner_title = FactoryBot.create(:section, page: home, name: "banner_title")
+    banner_text = FactoryBot.create(:section, page: home, name: "banner_text")
 
+    color_palette = FactoryBot.create(
+        :color_palette,
+        first: "284b63ff",
+        second: "ffffffff",
+        third: "d9d9d9ff",
+        fourth: "3c6e71ff",
+        fifth: "353535ff"
+    )
+    font_pair = FactoryBot.create(
+        :font_pair,
+        link_tag_href: "https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Roboto:wght@300&display=swap",
+        primary: "Libre Baskerville",
+        primary_backup: "serif",
+        secondary: "Roboto",
+        secondary_back_up: "sans-serif",
+    )
+    business = FactoryBot.create(:business, name: "my other business")
+    site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
+    contact = FactoryBot.create(:contact, site: site)
+    home = FactoryBot.create(:home, site: site)
+    about = FactoryBot.create(:about, site: site)
 
+end
 
-
-
-
-color_palette = FactoryBot.create(
-    :color_palette,
-    first: "284b63ff",
-    second: "ffffffff",
-    third: "d9d9d9ff",
-    fourth: "3c6e71ff",
-    fifth: "353535ff"
-)
-font_pair = FactoryBot.create(
-    :font_pair,
-    link_tag_href: "https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Roboto:wght@300&display=swap",
-    primary: "Libre Baskerville",
-    primary_backup: "serif",
-    secondary: "Roboto",
-    secondary_back_up: "sans-serif",
-)
-business = FactoryBot.create(:business, name: "my other business")
-site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
-contact = FactoryBot.create(:contact, site: site)
-home = FactoryBot.create(:home, site: site)
-about = FactoryBot.create(:about, site: site)
+Site.all.each do |site|
+    home = site.pages.find_by_type("Home")
+    home.sections.destroy_all
+    HOME_PAGE_DEFAULT_SECTIONS.each do |k,v|
+        home.sections.find_or_create_by(name: k).update!(content: v)
+    end
+end
