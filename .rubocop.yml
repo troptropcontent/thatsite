@@ -1,0 +1,17 @@
+require:
+  - rubocop-rails
+
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 3.0
+  Exclude:
+    - "bin/*"
+    - "db/**/*"
+    - "log/**/*"
+    - "tmp/**/*"
+  NewCops: enable
+
+Style/Documentation:
+  Enabled: false

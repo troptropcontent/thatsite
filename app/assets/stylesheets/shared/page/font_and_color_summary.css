@@ -1,0 +1,12 @@
+.font_and_color_summary .colors {
+    display: flex;
+}
+
+.font_and_color_summary .colors p {
+    text-align: center;
+    padding: 40px;
+}
+
+.font_and_color_summary .fonts {
+    width: 400px;
+}

@@ -1,0 +1,2 @@
+class FontPair < ApplicationRecord
+end

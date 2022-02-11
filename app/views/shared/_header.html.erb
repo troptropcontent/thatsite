@@ -1,0 +1,8 @@
+<div class="header">
+  <a href=<%= request.original_url.gsub(/[^\/]+$/, "home") %> class="logo">ThatSite</a>
+  <div class="right">
+    <a href=<%= request.original_url.gsub(/[^\/]+$/, "about") %>>A propos</a>
+    <a href=<%= request.original_url.gsub(/[^\/]+$/, "team") %>>Equipe</a>
+    <a href=<%= request.original_url.gsub(/[^\/]+$/, "contact") %>>Contact</a>
+  </div>
+</div>
