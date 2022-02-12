@@ -29,7 +29,7 @@ unless Site.count.positive?
   color_palette = FactoryBot.create(:color_palette)
   font_pair = FactoryBot.create(:font_pair)
   business = FactoryBot.create(:business)
-  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
+  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business, name: "thatsite")
   FactoryBot.create(:home, site: site)
   FactoryBot.create(:contact, site: site)
   FactoryBot.create(:about, site: site)
@@ -52,7 +52,7 @@ unless Site.count.positive?
     secondary_back_up: 'sans-serif'
   )
   business = FactoryBot.create(:business, name: 'my other business')
-  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
+  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business, name: "template-2")
   FactoryBot.create(:home, site: site)
   FactoryBot.create(:contact, site: site)
   FactoryBot.create(:about, site: site)
