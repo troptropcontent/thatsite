@@ -30,8 +30,8 @@ unless Site.count.positive?
   font_pair = FactoryBot.create(:font_pair)
   business = FactoryBot.create(:business)
   site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
-  FactoryBot.create(:contact, site: site)
   FactoryBot.create(:home, site: site)
+  FactoryBot.create(:contact, site: site)
   FactoryBot.create(:about, site: site)
   FactoryBot.create(:team, site: site)
 
@@ -53,8 +53,8 @@ unless Site.count.positive?
   )
   business = FactoryBot.create(:business, name: 'my other business')
   site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
-  FactoryBot.create(:contact, site: site)
   FactoryBot.create(:home, site: site)
+  FactoryBot.create(:contact, site: site)
   FactoryBot.create(:about, site: site)
   FactoryBot.create(:team, site: site)
 
