@@ -11,10 +11,12 @@ class PageController < ApplicationController
   private
 
   def page_params
-    params.permit(:site_id, :name)
+    params.permit(:name)
   end
 
   def load_page
-    @page = Page.find_by!(page_params)
+    site_name = ['', 'www'].include?(request.subdomain) ? "thatsite" : request.subdomain
+    site = Site.find_by!(name: site_name)
+    @page = site.pages.find_by!(page_params)
   end
 end
