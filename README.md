@@ -21,4 +21,24 @@ Things you may want to cover:
 
 * Deployment instructions
 
+If some issues are faced when runing db:migrate for the first time due to pg crypto : 
+
+- sudo su - postgres
+- psql
+- ALTER ROLE deploy SUPERUSER;
+- \q
+- exit
+
+Then run db:migrate
+
+Then replace the role as it was 
+
+- sudo su - postgres
+- psql
+- ALTER ROLE deploy NOSUPERUSER;
+- \q
+- exit
+
+
+
 * ...

@@ -60,8 +60,8 @@ unless Site.count.positive?
 
 end
 
-Site.all.each do |s|
-  home = s.pages.find_by(type: 'Home')
+Site.all.each do |record|
+  home = record.pages.find_by(type: 'Home')
   home.sections.destroy_all
   HOME_PAGE_DEFAULT_SECTIONS.each do |k, v|
     home.sections.find_or_create_by(name: k).update!(content: v)

@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2022_02_09_211532) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "business_hours", force: :cascade do |t|
@@ -73,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_211532) do
 
   create_table "pages", force: :cascade do |t|
     t.string "type"
-    t.uuid "site_id"
+    t.bigint "site_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
@@ -90,7 +89,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_211532) do
     t.index ["page_id"], name: "index_sections_on_page_id"
   end
 
-  create_table "sites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "sites", force: :cascade do |t|
     t.bigint "color_palette_id", null: false
     t.bigint "font_pair_id", null: false
     t.bigint "business_id", null: false
