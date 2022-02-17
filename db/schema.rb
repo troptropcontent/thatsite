@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_211532) do
+ActiveRecord::Schema.define(version: 2022_02_14_205054) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "business_hours", force: :cascade do |t|
@@ -73,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_211532) do
 
   create_table "pages", force: :cascade do |t|
     t.string "type"
-    t.uuid "site_id"
+    t.bigint "site_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
@@ -90,12 +89,13 @@ ActiveRecord::Schema.define(version: 2022_02_09_211532) do
     t.index ["page_id"], name: "index_sections_on_page_id"
   end
 
-  create_table "sites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "sites", force: :cascade do |t|
     t.bigint "color_palette_id", null: false
     t.bigint "font_pair_id", null: false
     t.bigint "business_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
     t.index ["business_id"], name: "index_sites_on_business_id"
     t.index ["color_palette_id"], name: "index_sites_on_color_palette_id"
     t.index ["font_pair_id"], name: "index_sites_on_font_pair_id"

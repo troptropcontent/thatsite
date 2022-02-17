@@ -29,9 +29,9 @@ unless Site.count.positive?
   color_palette = FactoryBot.create(:color_palette)
   font_pair = FactoryBot.create(:font_pair)
   business = FactoryBot.create(:business)
-  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
-  FactoryBot.create(:contact, site: site)
+  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business, name: "thatsite")
   FactoryBot.create(:home, site: site)
+  FactoryBot.create(:contact, site: site)
   FactoryBot.create(:about, site: site)
   FactoryBot.create(:team, site: site)
 
@@ -52,16 +52,16 @@ unless Site.count.positive?
     secondary_back_up: 'sans-serif'
   )
   business = FactoryBot.create(:business, name: 'my other business')
-  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business)
-  FactoryBot.create(:contact, site: site)
+  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business, name: "template2")
   FactoryBot.create(:home, site: site)
+  FactoryBot.create(:contact, site: site)
   FactoryBot.create(:about, site: site)
   FactoryBot.create(:team, site: site)
 
 end
 
-Site.all.each do |s|
-  home = s.pages.find_by(type: 'Home')
+Site.all.each do |record|
+  home = record.pages.find_by(type: 'Home')
   home.sections.destroy_all
   HOME_PAGE_DEFAULT_SECTIONS.each do |k, v|
     home.sections.find_or_create_by(name: k).update!(content: v)
