@@ -83,4 +83,4 @@ production:
   <<: *default
   database: thatsite_production
   username: thatsite
-  password: <%= ENV["THATSITE_DATABASE_PASSWORD"] %>
+  password: <%= Rails.application.credentials.config[:thatsite_database_password] %>
