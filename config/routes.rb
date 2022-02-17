@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   root 'page#show'
 
-  get '/:name', to: 'page#show', constraints: { subdomain: '/^[a-zA-Z]*/' }
-
-
+  get '/:name', to: 'page#show', constraints: { subdomain: /^[a-zA-Z0-9]*/ }
 end
+
