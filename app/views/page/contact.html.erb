@@ -1,1 +1,24 @@
-<h1>Hello from the contact page of the site <%= @page.site.id %> </h1>
+<div class="banner b-first c-second">
+  <h1><%= I18n.t "pages.contact.banner" %></h1>
+</div>
+<div class="banner">
+  <div class="grid">
+    <div class="padding-16 border">
+        <%= render "shared/contact_form"%>
+    </div>
+    <div>
+        <h3><%= I18n.t "pages.contact.office.title" %></h1>
+        <% @site.business.offices.each do |office| %>
+        <div>
+          <p><%= office.address_full %></p>
+          <p><%= office.address_complement  %></p>
+          <p><%= "#{office.address_zipcode}, #{office.addresse_city}" %></p>
+          <h3><%= I18n.t "pages.contact.office.business_hours" %></h1>
+          <% BusinessHourFormater.new(office).call.each do |string| %>
+            <p><%= string %></p>
+          <% end %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>  
