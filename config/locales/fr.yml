@@ -27,3 +27,6 @@ fr:
         saturday: Samedi
         sunday: Dimanche
     closed: fermé
+  office:
+    attributes:
+      phone: Téléphone

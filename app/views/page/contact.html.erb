@@ -13,6 +13,7 @@
           <p><%= office.address_full %></p>
           <p><%= office.address_complement  %></p>
           <p><%= "#{office.address_zipcode}, #{office.addresse_city}" %></p>
+          <p><%= "#{I18n.t "office.attributes.phone"}: #{office.phone}" %></p>
           <h3><%= I18n.t "pages.contact.office.business_hours" %></h1>
           <% BusinessHourFormater.new(office).call.each do |string| %>
             <p><%= string %></p>
