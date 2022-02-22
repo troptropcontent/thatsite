@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class PageController < ApplicationController
-  before_action :load_page
+  before_action :load_page_and_site
 
   def show
-    @page
     render @page.name, layout: 'page'
   end
 
@@ -14,9 +13,9 @@ class PageController < ApplicationController
     params.permit(:name)
   end
 
-  def load_page
-    site_name = ['', 'www'].include?(request.subdomain) ? "thatsite" : request.subdomain
-    site = Site.find_by!(name: site_name)
-    @page = site.pages.find_by!(page_params)
+  def load_page_and_site
+    site_name = ['', 'www'].include?(request.subdomain) ? 'thatsite' : request.subdomain
+    @site = Site.find_by!(name: site_name)
+    @page = @site.pages.find_by!(page_params)
   end
 end
