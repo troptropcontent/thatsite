@@ -1,0 +1,29 @@
+fr:
+  pages:
+    contact:
+      banner: Contactez nous
+      form:
+        inputs:
+          name:
+            placeholder: Votre nom ...
+            label: Votre nom
+          email:
+            placeholder: Votre email ...
+            label: Votre email
+          content:
+            placeholder: Bonjour
+            label: Que pouvons nous faire pour vous ?
+      office:
+        title: Passez nous voir
+        business_hours: Horaires
+  business_hours:
+    enum:
+      weekday:
+        monday: Lundi
+        tuesday: Mardi
+        wednesday: Mercredi
+        thursday: Jeudi
+        friday: Vendredi
+        saturday: Samedi
+        sunday: Dimanche
+    closed: fermé

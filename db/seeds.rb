@@ -22,6 +22,10 @@ HOME_PAGE_DEFAULT_SECTIONS = {
   'cta_title' => "C'est parti",
   'cta_btn' => 'Démarrer le formulaire'
 }.freeze
+
+CONTACT_PAGE_DEFAULT_SECTIONS = {
+  'banner_title' => 'Contactez nous'
+}.freeze
 # rubocop:enable Layout/LineLength
 
 unless Site.count.positive?
@@ -29,7 +33,24 @@ unless Site.count.positive?
   color_palette = FactoryBot.create(:color_palette)
   font_pair = FactoryBot.create(:font_pair)
   business = FactoryBot.create(:business)
-  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business, name: "thatsite")
+  office = FactoryBot.create(:office, business: business, address_full: '38 rue ordener', address_zipcode: '75018',
+                                      addresse_city: 'Paris', name: 'Paris 18')
+
+  office.business_hours.create(weekday: :monday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :tuesday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :wednesday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :thursday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :friday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :saturday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 14, minute: 0))
+
+  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business,
+                                  name: 'thatsite')
   FactoryBot.create(:home, site: site)
   FactoryBot.create(:contact, site: site)
   FactoryBot.create(:about, site: site)
@@ -52,7 +73,23 @@ unless Site.count.positive?
     secondary_back_up: 'sans-serif'
   )
   business = FactoryBot.create(:business, name: 'my other business')
-  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business, name: "template2")
+  office = FactoryBot.create(:office, business: business, address_full: '38 rue ordener', address_zipcode: '75018',
+                                      addresse_city: 'Paris', name: 'Paris 18')
+
+  office.business_hours.create(weekday: :monday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :tuesday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :wednesday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :thursday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :friday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 19, minute: 0))
+  office.business_hours.create(weekday: :saturday, opens_at: Time.current.change(hour: 9, minute: 0),
+                               closes_at: Time.current.change(hour: 14, minute: 0))
+  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business,
+                                  name: 'template2')
   FactoryBot.create(:home, site: site)
   FactoryBot.create(:contact, site: site)
   FactoryBot.create(:about, site: site)

@@ -3,6 +3,30 @@
     justify-content: center;
 }
 
+.ta-l {
+  text-align: left;
+}
+
+.width-f {
+  width: 100%;
+}
+
+.padding-h-32 {
+  padding: 32px 0px;
+}
+
+.padding-16 {
+  padding: 16px;
+}
+
+.border {
+  border: 1px solid #ccc;
+}
+
+.block {
+  display: block;
+}
+
 .banner {
     padding: 60px;
     text-align: center;
