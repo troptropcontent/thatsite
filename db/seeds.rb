@@ -30,11 +30,29 @@ CONTACT_PAGE_DEFAULT_SECTIONS = {
 
 unless Site.count.positive?
 
-  color_palette = FactoryBot.create(:color_palette)
-  font_pair = FactoryBot.create(:font_pair)
-  business = FactoryBot.create(:business)
-  office = FactoryBot.create(:office, business: business, address_full: '38 rue ordener', address_zipcode: '75018',
-                                      addresse_city: 'Paris', name: 'Paris 18', phone: '0607053868')
+  color_palette = ColorPalette.create(
+    first: "e63946",
+    second: "f1faee",
+    third: "a8dadc",
+    fourth: "457b9d",
+    fifth: "1d3557",
+  )
+  font_pair = FontPair.create(
+    link_tag_href: "https://fonts.googleapis.com/css2?family=Commissioner:wght@300&family=Fraunces&display=swap",
+    primary: "Fraunces",
+    primary_backup: "serif",
+    secondary: "Commissioner",
+    secondary_back_up: "sans-serif",
+  )
+  business = Business.create(name: "thasite")
+  office = Office.create(
+    business: business,
+    address_full: '38 rue ordener',
+    address_zipcode: '75018',
+    addresse_city: 'Paris',
+    name: 'Paris 18',
+    phone: '0607053868'
+  )
 
   office.business_hours.create(weekday: :monday, opens_at: Time.current.change(hour: 9, minute: 0),
                                closes_at: Time.current.change(hour: 19, minute: 0))
@@ -49,32 +67,40 @@ unless Site.count.positive?
   office.business_hours.create(weekday: :saturday, opens_at: Time.current.change(hour: 9, minute: 0),
                                closes_at: Time.current.change(hour: 14, minute: 0))
 
-  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business,
-                                  name: 'thatsite')
-  FactoryBot.create(:home, site: site)
-  FactoryBot.create(:contact, site: site)
-  FactoryBot.create(:about, site: site)
-  FactoryBot.create(:team, site: site)
+  site = Site.create(
+    color_palette: color_palette, 
+    font_pair: font_pair, 
+    business: business,
+    name: 'thatsite'
+  )
+  Home.create(site: site)
+  Contact.create(site: site)
+  About.create(site: site)
+  Team.create(site: site)
 
-  color_palette = FactoryBot.create(
-    :color_palette,
+  color_palette = ColorPalette.create(
     first: '284b63ff',
     second: 'ffffffff',
     third: 'd9d9d9ff',
     fourth: '3c6e71ff',
     fifth: '353535ff'
   )
-  font_pair = FactoryBot.create(
-    :font_pair,
+  font_pair = FontPair.create(
     link_tag_href: 'https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Roboto:wght@300&display=swap',
     primary: 'Libre Baskerville',
     primary_backup: 'serif',
     secondary: 'Roboto',
     secondary_back_up: 'sans-serif'
   )
-  business = FactoryBot.create(:business, name: 'my other business')
-  office = FactoryBot.create(:office, business: business, address_full: '38 rue ordener', address_zipcode: '75018',
-                                      addresse_city: 'Paris', name: 'Paris 18', phone: '0607053868')
+  business = Business.create(name: 'my other business')
+  office = Office.create(
+    business: business,
+    address_full: '38 rue ordener',
+    address_zipcode: '75018',
+    addresse_city: 'Paris',
+    name: 'Paris 18',
+    phone: '0607053868'
+  )
 
   office.business_hours.create(weekday: :monday, opens_at: Time.current.change(hour: 9, minute: 0),
                                closes_at: Time.current.change(hour: 19, minute: 0))
@@ -88,12 +114,16 @@ unless Site.count.positive?
                                closes_at: Time.current.change(hour: 19, minute: 0))
   office.business_hours.create(weekday: :saturday, opens_at: Time.current.change(hour: 9, minute: 0),
                                closes_at: Time.current.change(hour: 14, minute: 0))
-  site = FactoryBot.create(:site, color_palette: color_palette, font_pair: font_pair, business: business,
-                                  name: 'template2')
-  FactoryBot.create(:home, site: site)
-  FactoryBot.create(:contact, site: site)
-  FactoryBot.create(:about, site: site)
-  FactoryBot.create(:team, site: site)
+  site = Site.create(
+    color_palette: color_palette,
+    font_pair: font_pair,
+    business: business,
+    name: 'template2'
+  )
+  Home.create(site: site)
+  Contact.create(site: site)
+  About.create(site: site)
+  Team.create(site: site)
 
 end
 
