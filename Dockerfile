@@ -1,42 +1,24 @@
 
 # syntax=docker/dockerfile:1
 FROM ruby:3.0.3-buster
+RUN apt-get update -qq 
 
-RUN apt-get install \
-  runtime-deps \
-  postgresql-client \
-  build-base \
-  libxml2-dev \
-  libxslt-dev \
-  nodejs \
-  yarn \
-  libffi-dev \
-  readline \
-  build-base \
-  postgresql-dev \
-  sqlite-dev \
-  libc-dev \
-  linux-headers \
-  readline-dev \
-  file \
-  imagemagick \
-  git \
-  curl \
-  tzdata 
+# Install Ruby packages
+RUN apt-get install git curl
 
 # Install nodejs
 RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n && bash n 15
 
+ARG APP_ROOT=/app
 ARG RAILS_MASTER_KEY 
-WORKDIR /app
+WORKDIR $APP_ROOT
 ENV RAILS_ENV=production
 ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
 
-COPY Gemfile Gemfile.lock .
-RUN yarn install
-RUN bundle config set --local without 'development:test' && bundle install && bundle exec rails db:migrate
+COPY Gemfile Gemfile.lock $APP_ROOT/
+RUN bundle config set --local without 'development:test' && bundle install && bundle exec rails assets:precompile db:migrate 
 
-COPY . .
+COPY . $APP_ROOT
 
 ENV LANG=en_US.UTF-8
 
