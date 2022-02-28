@@ -1,8 +1,8 @@
 
 # syntax=docker/dockerfile:1
 FROM ruby:3.0.3-buster
-RUN apt-get update -qq 
-RUN apk add --update --virtual \
+
+RUN apt-get update -qq \
   runtime-deps \
   postgresql-client \
   build-base \
