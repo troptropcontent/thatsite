@@ -2,7 +2,7 @@
 # syntax=docker/dockerfile:1
 FROM ruby:3.0.3-buster
 
-RUN apt-get update -qq \
+RUN apt-get install \
   runtime-deps \
   postgresql-client \
   build-base \
