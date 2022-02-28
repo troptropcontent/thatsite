@@ -22,8 +22,7 @@ RUN apt-get install \
   imagemagick \
   git \
   curl \
-  tzdata \
-  && rm -rf /var/cache/apk/*
+  tzdata 
 
 # Install nodejs
 RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n && bash n 15
