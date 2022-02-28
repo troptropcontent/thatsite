@@ -1,3 +1,4 @@
+
 # syntax=docker/dockerfile:1
 FROM ruby:3.0.3-buster
 RUN apt-get update -qq 
@@ -15,7 +16,7 @@ ENV RAILS_ENV=production
 ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
 
 COPY Gemfile Gemfile.lock $APP_ROOT/
-RUN bundle config set --local without 'development:test' && bundle install && bundle exec rails assets:precompile db:migrate 
+RUN bundle config set --local without 'development:test' && bundle install && bundle exec rails db:migrate && rails assets:precompile
 
 COPY . $APP_ROOT
 
