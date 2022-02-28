@@ -16,7 +16,8 @@ ENV RAILS_ENV=production
 ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
 
 COPY Gemfile Gemfile.lock $APP_ROOT/
-RUN bundle config set --local without 'development:test' && bundle install && bundle exec rails db:migrate && rails assets:precompile
+RUN bundle config set --local without 'development:test' && bundle install && bundle exec rails db:migrate
+RUN bundle exec rails assets:precompile
 
 COPY . $APP_ROOT
 
