@@ -4,7 +4,7 @@ FROM ruby:3.0.3-buster
 RUN apt-get update -qq 
 
 # Install Ruby packages
-RUN apt-get install git curl
+RUN apt-get install git curl yarn -y
 
 # Install nodejs
 RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n && bash n 15
