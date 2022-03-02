@@ -17,16 +17,13 @@ fr:
         title: Passez nous voir
         business_hours: Horaires
     home:
-      common_content:
+      static_content:
         what_we_believe_in: Notre vision
         what_we_do: Que faisons nous
-        who_we_are:
-          one: Qui suis-je
-          other: Qui sommes nous
+        who_we_are: Qui sommes nous
         know_more: En savoir plus
-        let's go: C'est parti
+        let_s_go: C'est parti
         cta: Contactez-nous
-        cta_thatsite: Démarrez le formulaire
 
   business_hours:
     enum:
