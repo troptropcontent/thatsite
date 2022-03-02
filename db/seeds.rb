@@ -10,17 +10,13 @@
 
 # rubocop:disable Layout/LineLength
 HOME_PAGE_DEFAULT_SECTIONS = {
-  'banner_title' => 'Votre Site Web',
+  'banner_title' => 'Votre site web',
   'banner_text' => "En quelques questions c'est tout !",
-  'what_we_believe_in_bottom' => "Nous souhaiter donner a chaque entreprise la possibilite d'etre visible sur internet en quelques minutes",
-  'what_we_believe_in_top' => 'Notre vision',
-  'about_title' => 'Qui sommes nous',
-  'about_short_description' => "Nous sommes une equipe de passionnés de design et de choses bien faites. Chaque commerce, chaque entreprise a droit a la visibilite qu'il mérite",
-  'what_we_do_description' =>
-    'Nous avons mis au point une solution qui, se base de vos reponse a une serie de question, construit en direct un site internet. Choisissez parmis nos palettes de couleurs et nos polices libres pour obtenir un site unique et repondez a nos questions, nous nous chargeons du reste.',
-  'what_we_do_title' => 'Que faisons nous',
-  'cta_title' => "C'est parti",
-  'cta_btn' => 'Démarrer le formulaire'
+  'what_we_believe_in_text' => "Nous souhaitons donner à chaque entreprise la possibilité d'etre visible sur internet en quelques minutes",
+  'who_we_are_text' => "Nous sommes une equipe de passionnés de design et de choses bien faites. Chaque commerce, chaque entreprise à droit à la visibilite qu'il mérite",
+  'what_we_do_text' =>
+    'Nous avons mis au point une solution qui, se base de vos réponses à une serie de question, construit en direct un site internet. Choisissez parmis nos palettes de couleurs et nos polices libres pour obtenir un site unique et repondez a nos questions, nous nous chargeons du reste.',
+  'cta' => 'Démarrer le formulaire'
 }.freeze
 
 CONTACT_PAGE_DEFAULT_SECTIONS = {

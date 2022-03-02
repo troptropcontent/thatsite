@@ -1,17 +1,17 @@
 <div class="banner b-first c-second">
-  <h1><%= @page.sections.find_by(name: "banner_title").content %></h1>
-  <p><%= @page.sections.find_by(name: "banner_text").content %></p>
+  <h1><%= @content["banner_title"] %></h1>
+  <p><%= @content["banner_text"] %></p>
 </div>
 <div class="banner">
-  <p><%= @page.sections.find_by(name: "what_we_believe_in_top").content %></p>
-  <h3><%= @page.sections.find_by(name: "what_we_believe_in_bottom").content %></h1>
+  <p><%= @content["what_we_believe_in"] %></p>
+  <h3><%= @content["what_we_believe_in_text"] %></h1>
 </div>
 <div class="banner">
   <div class="grid">
     <div>
-        <p><%= @page.sections.find_by(name: "what_we_do_title").content %></p>
-        <h3><%= @page.sections.find_by(name: "what_we_do_description").content %></h1>
-        <a href=<%= request.original_url.gsub(/[^\/]+$/, "about")%> class="btn b-first c-second">En savoir plus</a>
+        <p><%= @content["what_we_do"] %></p>
+        <h3><%=  @content["what_we_do_text"] %></h1>
+        <a href=<%= request.original_url.gsub(/[^\/]+$/, "about")%> class="btn b-first c-second"><%= @content["know_more"] %> </a>
     </div>
     <div class="b-first">
         <div class="image">
@@ -26,13 +26,13 @@
         </div>
     </div>
     <div>
-        <p><%= @page.sections.find_by(name: "about_title").content %></p>
-        <h3><%= @page.sections.find_by(name: "about_short_description").content %></h1>
-        <a href=<%= request.original_url.gsub(/[^\/]+$/, "team")%> class="btn b-first c-second">En savoir plus</a>
+        <p><%= @content["who_we_are"] %></p>
+        <h3><%= @content["who_we_are_text"] %></h1>
+        <a href=<%= request.original_url.gsub(/[^\/]+$/, "team")%> class="btn b-first c-second"><%= @content["know_more"] %></a>
     </div>
   </div>
 </div>
 <div class="banner b-first c-second">
-  <h1><%= @page.sections.find_by(name: "cta_title").content %></h1>
-  <a href=# class="btn b-second c-first"><%= @page.sections.find_by(name: "cta_btn").content %></a>
+  <h1><%= @content["let_s_go"] %></h1>
+  <a href=# class="btn b-second c-first"><%=  @content["cta"] %></a>
 </div>
