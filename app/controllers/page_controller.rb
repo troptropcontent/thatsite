@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class PageController < ApplicationController
-  before_action :load_page_and_site
 
   def show
-    # @content = load_content
+    @site = load_site
+    @page = load_page
+    @content = build_content
     render @page.name, layout: 'page'
   end
 
@@ -14,13 +15,16 @@ class PageController < ApplicationController
     params.permit(:name)
   end
 
-  def load_page_and_site
+  def load_site
     site_name = ['', 'www'].include?(request.subdomain) ? 'thatsite' : request.subdomain
-    @site = Site.find_by!(name: site_name)
-    @page = @site.pages.find_by!(page_params)
+    Site.find_by!(name: site_name)
   end
 
-  def load_content
-    content_loader.new(@page).call
+  def load_page
+    @site.pages.find_by!(page_params)
+  end
+
+  def build_content
+    ContentBuilder.new(@page).call
   end
 end
