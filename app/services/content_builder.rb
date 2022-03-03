@@ -7,8 +7,7 @@ class ContentBuilder
   
     def call
         {
-            **static_content,
-            **default_sections,
+            **default_cotent,
             **page_content,
         }
     end
@@ -19,9 +18,18 @@ class ContentBuilder
         @page.class::DEFAULT_SECTIONS.each_with_object({}){|key, r| r[key] = nil }
     end
 
-    def static_content
-        I18n.t("pages.#{@page.class.to_s.downcase}.static_content").stringify_keys
+    def static_sections
+        I18n.t("pages.#{@page.name}.static_sections").stringify_keys
     end
+
+    def default_cotent
+        return {} unless @page.default?
+        {
+            **static_sections,
+            **default_sections,
+        }
+    end
+
 
     def page_content
         @page.sections.pluck(:name, :content).to_h

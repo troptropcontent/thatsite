@@ -1,7 +1,6 @@
 fr:
   pages:
     contact:
-      banner: Contactez nous
       form:
         inputs:
           name:
@@ -13,18 +12,32 @@ fr:
           content:
             placeholder: Bonjour
             label: Que pouvons nous faire pour vous ?
-      office:
-        title: Passez nous voir
+      static_sections:
+        banner_title: Contactez nous
+        offices_title: Passez nous voir
+        telephone: Téléphone
         business_hours: Horaires
+
     home:
-      static_content:
+      static_sections:
         what_we_believe_in: Notre vision
-        what_we_do: Que faisons nous
-        who_we_are: Qui sommes nous
+        what_we_do: Que faisons nous ?
+        who_we_are: Qui sommes nous ?
         know_more: En savoir plus
         let_s_go: C'est parti
         cta: Contactez-nous
-
+    about:
+      static_sections:
+        what_we_do: Que faisons nous ?
+        let_s_go: C'est parti
+        cta: Contactez-nous
+    team:
+      static_sections:
+        who_we_are: Qui sommes nous ?
+        our_team: Notre équipe
+        let_s_go: C'est parti
+        cta: Contactez-nous
+        
   business_hours:
     enum:
       weekday:

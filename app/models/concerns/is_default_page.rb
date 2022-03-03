@@ -8,5 +8,9 @@ module IsDefaultPage
 
         validates :type, uniqueness: { scope: :site,
             message: "there can only be one page of this type per site" }
+
+        def default?
+            true
+        end
     end
 end

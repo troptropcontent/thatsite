@@ -7,4 +7,8 @@ class Page < ApplicationRecord
 
   DEFAULT_SECTIONS = %w[].freeze
 
+  def default?
+    false
+  end
+
 end

@@ -19,6 +19,18 @@ HOME_PAGE_DEFAULT_SECTIONS = {
   'cta' => 'Démarrer le formulaire'
 }.freeze
 
+ABOUT_PAGE_DEFAULT_SECTIONS = {
+  "what_we_do_phrase" => "Nous permettons à chaque entreprise d'avoir son site web, sans prise de tete.",
+  "what_we_do_paragraph" => "Nous avons créé un algoritme pour créer des site web sur la base de réponse a un formulaire. Le fonctionnement est simple. Vous choissisez une combinaison de couleurs et une association de police pour le sesign de voyre site, ensuite, vous repondez a notre formulaire pour que l'on en sache plus sur votre entreprise et ... c'est tout.
+    Une fois le formulaire sousmis, votre site est en ligne et accessible de n'importe où. Vous pouvez bien sur, si vous le souhaitez, utiliser votre propre nom de domaine pour atteindre votre site.",
+  'cta' => 'Démarrer le formulaire'
+}.freeze
+
+TEAM_PAGE_DEFAULT_SECTIONS = {
+  "who_we_are_phrase" => "Notre équipe de passionnés, pour vous donner la meilleure ex^périence possible",
+  'cta' => 'Démarrer le formulaire'
+}.freeze
+
 CONTACT_PAGE_DEFAULT_SECTIONS = {
   'banner_title' => 'Contactez nous'
 }.freeze
@@ -125,8 +137,17 @@ end
 
 Site.all.each do |record|
   home = record.pages.find_by(type: 'Home')
+  about = record.pages.find_by(type: 'About')
+  team = record.pages.find_by(type: 'Team')
   home.sections.destroy_all
+  about.sections.destroy_all
   HOME_PAGE_DEFAULT_SECTIONS.each do |k, v|
     home.sections.find_or_create_by(name: k).update!(content: v)
+  end
+  ABOUT_PAGE_DEFAULT_SECTIONS.each do |k, v|
+    about.sections.find_or_create_by(name: k).update!(content: v)
+  end
+  TEAM_PAGE_DEFAULT_SECTIONS.each do |k, v|
+    team.sections.find_or_create_by(name: k).update!(content: v)
   end
 end
