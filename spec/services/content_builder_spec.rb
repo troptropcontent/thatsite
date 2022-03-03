@@ -11,8 +11,8 @@ RSpec.describe ContentBuilder do
             let(:expected) {
                 {
                     "what_we_believe_in"=>"Notre vision",
-                    "what_we_do"=>"Que faisons nous", 
-                    "who_we_are"=>"Qui sommes nous", 
+                    "what_we_do"=>"Que faisons nous ?", 
+                    "who_we_are"=>"Qui sommes nous ?", 
                     "know_more"=>"En savoir plus",
                     "let_s_go"=>"C'est parti", 
                     "cta"=>"Contactez-nous", 
@@ -33,8 +33,8 @@ RSpec.describe ContentBuilder do
                 let(:expected) {
                 {
                     "what_we_believe_in"=>"Notre vision",
-                    "what_we_do"=>"Que faisons nous", 
-                    "who_we_are"=>"Qui sommes nous", 
+                    "what_we_do"=>"Que faisons nous ?", 
+                    "who_we_are"=>"Qui sommes nous ?", 
                     "know_more"=>"En savoir plus",
                     "let_s_go"=>"C'est parti", 
                     "cta"=>"Contactez-nous", 
@@ -55,8 +55,8 @@ RSpec.describe ContentBuilder do
                 let(:expected) {
                 {
                     "what_we_believe_in"=>"Notre vision",
-                    "what_we_do"=>"Que faisons nous", 
-                    "who_we_are"=>"Qui sommes nous", 
+                    "what_we_do"=>"Que faisons nous ?", 
+                    "who_we_are"=>"Qui sommes nous ?", 
                     "know_more"=>"En savoir plus",
                     "let_s_go"=>"C'est parti", 
                     "cta"=>"Remplir le formulaire", 
@@ -77,8 +77,8 @@ RSpec.describe ContentBuilder do
                 let(:expected) {
                 {
                     "what_we_believe_in"=>"Notre vision",
-                    "what_we_do"=>"Que faisons nous", 
-                    "who_we_are"=>"Qui sommes nous", 
+                    "what_we_do"=>"Que faisons nous ?", 
+                    "who_we_are"=>"Qui sommes nous ?", 
                     "know_more"=>"En savoir plus",
                     "let_s_go"=>"C'est parti", 
                     "cta"=>"Contactez-nous", 
