@@ -38,29 +38,11 @@ CONTACT_PAGE_DEFAULT_SECTIONS = {
 
 unless Site.count.positive?
 
-  color_palette = ColorPalette.create(
-    first: "e63946",
-    second: "f1faee",
-    third: "a8dadc",
-    fourth: "457b9d",
-    fifth: "1d3557",
-  )
-  font_pair = FontPair.create(
-    link_tag_href: "https://fonts.googleapis.com/css2?family=Commissioner:wght@300&family=Fraunces&display=swap",
-    primary: "Fraunces",
-    primary_backup: "serif",
-    secondary: "Commissioner",
-    secondary_back_up: "sans-serif",
-  )
-  business = Business.create(name: "thasite")
-  office = Office.create(
-    business: business,
-    address_full: '38 rue ordener',
-    address_zipcode: '75018',
-    addresse_city: 'Paris',
-    name: 'Paris 18',
-    phone: '0607053868'
-  )
+  color_palette = FactoryBot.create(:color_palette)
+  font_pair = FactoryBot.create(:font_pair)
+  business = FactoryBot.create(:business)
+  office = FactoryBot.create(:office, business: business, address_full: '38 rue ordener', address_zipcode: '75018',
+                                      addresse_city: 'Paris', name: 'Paris 18', phone: '0607053868')
 
   office.business_hours.create(weekday: :monday, opens_at: Time.current.change(hour: 9, minute: 0),
                                closes_at: Time.current.change(hour: 19, minute: 0))
@@ -100,15 +82,9 @@ unless Site.count.positive?
     secondary: 'Roboto',
     secondary_back_up: 'sans-serif'
   )
-  business = Business.create(name: 'my other business')
-  office = Office.create(
-    business: business,
-    address_full: '38 rue ordener',
-    address_zipcode: '75018',
-    addresse_city: 'Paris',
-    name: 'Paris 18',
-    phone: '0607053868'
-  )
+  business = FactoryBot.create(:business, name: 'my other business')
+  office = FactoryBot.create(:office, business: business, address_full: '38 rue ordener', address_zipcode: '75018',
+                                      addresse_city: 'Paris', name: 'Paris 18', phone: '0607053868')
 
   office.business_hours.create(weekday: :monday, opens_at: Time.current.change(hour: 9, minute: 0),
                                closes_at: Time.current.change(hour: 19, minute: 0))
