@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_22_073208) do
+ActiveRecord::Schema.define(version: 2022_03_05_165830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2022_02_22_073208) do
     t.index ["business_id"], name: "index_sites_on_business_id"
     t.index ["color_palette_id"], name: "index_sites_on_color_palette_id"
     t.index ["font_pair_id"], name: "index_sites_on_font_pair_id"
+    t.index ["name"], name: "index_sites_on_name", unique: true
   end
 
   create_table "team_members", force: :cascade do |t|
