@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   constraints subdomain: "member" do
     get "/" => "dashboard#show"
+    get '/:name', to: 'dashboard#show'
   end
   root 'page#show'
 
