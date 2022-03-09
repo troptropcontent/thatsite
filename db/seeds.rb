@@ -37,10 +37,10 @@ unless Site.count.positive?
   }.freeze
   # rubocop:enable Layout/LineLength
 
-  color_palette = ColorPalette.find_or_create_by(first: 'e63946', second: 'f1faee', third: 'a8dadc', fourth: '457b9d',
+  color_palette = ColorPalette.find_or_create_by!(first: 'e63946', second: 'f1faee', third: 'a8dadc', fourth: '457b9d',
                                                  fifth: '1d3557')
 
-  font_pair = FontPair.find_or_create_by(
+  font_pair = FontPair.find_or_create_by!(
     link_tag_href: 'https://fonts.googleapis.com/css2?family=Commissioner:wght@300&family=Fraunces&display=swap',
     primary: 'Fraunces',
     primary_backup: 'serif',
@@ -48,9 +48,21 @@ unless Site.count.positive?
     secondary_back_up: 'sans-serif'
   )
 
-  business = Business.find_or_create_by(name: 'ThatSite')
+  user = User.create(
+    email: "firstuser@example.com",
+    password: "test.123",
+    password_confirmation: "test.123"
+  )
 
-  office = Office.find_or_create_by(
+  byebug
+  site = user.sites.find_or_create_by!(
+    color_palette: color_palette,
+    font_pair: font_pair,
+    name: 'thatsite'
+  )
+  business = Business.find_or_create_by!(name: 'ThatSite', site: site)
+
+  office = Office.find_or_create_by!(
     business: business,
     address_full: '38 rue ordener',
     address_zipcode: '75018',
@@ -59,29 +71,23 @@ unless Site.count.positive?
     phone: '0607053868'
   )
 
-  office.business_hours.find_or_create_by(weekday: :monday, opens_at: Time.utc(2008, 7, 8, 9, 10),
+  office.business_hours.find_or_create_by!(weekday: :monday, opens_at: Time.utc(2008, 7, 8, 9, 10),
                                           closes_at: Time.utc(2008, 7, 8, 19, 10))
-  office.business_hours.find_or_create_by(weekday: :tuesday, opens_at: Time.utc(2008, 7, 8, 9, 10),
+  office.business_hours.find_or_create_by!(weekday: :tuesday, opens_at: Time.utc(2008, 7, 8, 9, 10),
                                           closes_at: Time.utc(2008, 7, 8, 19, 10))
-  office.business_hours.find_or_create_by(weekday: :wednesday, opens_at: Time.utc(2008, 7, 8, 9, 10),
+  office.business_hours.find_or_create_by!(weekday: :wednesday, opens_at: Time.utc(2008, 7, 8, 9, 10),
                                           closes_at: Time.utc(2008, 7, 8, 19, 10))
-  office.business_hours.find_or_create_by(weekday: :thursday, opens_at: Time.utc(2008, 7, 8, 9, 10),
+  office.business_hours.find_or_create_by!(weekday: :thursday, opens_at: Time.utc(2008, 7, 8, 9, 10),
                                           closes_at: Time.utc(2008, 7, 8, 19, 10))
-  office.business_hours.find_or_create_by(weekday: :friday, opens_at: Time.utc(2008, 7, 8, 9, 10),
+  office.business_hours.find_or_create_by!(weekday: :friday, opens_at: Time.utc(2008, 7, 8, 9, 10),
                                           closes_at: Time.utc(2008, 7, 8, 19, 10))
-  office.business_hours.find_or_create_by(weekday: :saturday, opens_at: Time.utc(2008, 7, 8, 9, 10),
+  office.business_hours.find_or_create_by!(weekday: :saturday, opens_at: Time.utc(2008, 7, 8, 9, 10),
                                           closes_at: Time.utc(2008, 7, 8, 14, 10))
 
-  site = Site.find_or_create_by(
-    color_palette: color_palette,
-    font_pair: font_pair,
-    business: business,
-    name: 'thatsite'
-  )
-  Home.find_or_create_by(site: site)
-  Contact.find_or_create_by(site: site)
-  About.find_or_create_by(site: site)
-  Team.find_or_create_by(site: site)
+  Home.find_or_create_by!(site: site)
+  Contact.find_or_create_by!(site: site)
+  About.find_or_create_by!(site: site)
+  Team.find_or_create_by!(site: site)
 
   color_palette = ColorPalette.create(
     first: '284b63ff',
@@ -98,9 +104,21 @@ unless Site.count.positive?
     secondary_back_up: 'sans-serif'
   )
 
-  business = Business.find_or_create_by(name: 'My Other Business')
+  user = User.create(
+    email: "seconduser@example.com",
+    password: "test.123",
+    password_confirmation: "test.123"
+  )
 
-  office = Office.find_or_create_by(
+  site = user.sites.create(
+    color_palette: color_palette,
+    font_pair: font_pair,
+    name: 'template2'
+  )
+
+  business = Business.find_or_create_by!(name: 'My Other Business', site: site)
+
+  office = Office.find_or_create_by!(
     business: business,
     address_full: '38 rue ordener',
     address_zipcode: '75018',
@@ -121,12 +139,6 @@ unless Site.count.positive?
                                closes_at: Time.utc(2008, 7, 8, 19, 10))
   office.business_hours.create(weekday: :saturday, opens_at: Time.utc(2008, 7, 8, 9, 10),
                                closes_at: Time.utc(2008, 7, 8, 14, 10))
-  site = Site.create(
-    color_palette: color_palette,
-    font_pair: font_pair,
-    business: business,
-    name: 'template2'
-  )
   Home.create(site: site)
   Contact.create(site: site)
   About.create(site: site)
@@ -139,13 +151,13 @@ unless Site.count.positive?
     home.sections.destroy_all
     about.sections.destroy_all
     HOME_PAGE_DEFAULT_SECTIONS.each do |k, v|
-      home.sections.find_or_create_by(name: k).update!(content: v)
+      home.sections.find_or_create_by!(name: k).update!(content: v)
     end
     ABOUT_PAGE_DEFAULT_SECTIONS.each do |k, v|
-      about.sections.find_or_create_by(name: k).update!(content: v)
+      about.sections.find_or_create_by!(name: k).update!(content: v)
     end
     TEAM_PAGE_DEFAULT_SECTIONS.each do |k, v|
-      team.sections.find_or_create_by(name: k).update!(content: v)
+      team.sections.find_or_create_by!(name: k).update!(content: v)
     end
   end
 end
