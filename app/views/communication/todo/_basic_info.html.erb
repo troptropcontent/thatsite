@@ -1,0 +1,10 @@
+<%= turbo_frame_tag dom_id(todo) do %>
+  <div class="container <%= todo.status %>">
+    <%= form_with url: "/todo/basic_info", method: :put do |form| %>
+    <%= form.label 'site[name]', "Enter your site name:" %>
+    <%= form.text_field 'site[name]', value: todo.inputs[:site_name]%>
+    <%= form.submit "Validé", disabled: todo.status == "done" %>
+  <% end %>
+  </div>
+<% end %>
+

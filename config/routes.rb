@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   constraints subdomain: "member" do
     get "/" => "dashboard#show"
     get '/:name', to: 'dashboard#show'
-    resources :sites, only: :new
+    resources :sites, param: :name, only: [:new, :edit]
+    scope '/todo' do
+      put "/basic_info", to: "communication/todo/base#basic_info"
+    end
   end
   root 'page#show'
 
