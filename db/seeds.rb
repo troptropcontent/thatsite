@@ -54,7 +54,6 @@ unless Site.count.positive?
     password_confirmation: "test.123"
   )
 
-  byebug
   site = user.sites.find_or_create_by!(
     color_palette: color_palette,
     font_pair: font_pair,
