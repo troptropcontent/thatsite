@@ -41,7 +41,7 @@ module Communication::Todo
         end
 
         def avancement
-            @avancement ||= @inputs.filter{|k,v| v.present?}.count.to_f / @inputs.count
+            @avancement ||= @site.id ? @inputs.filter{|k,v| v.present?}.count.to_f / @inputs.count : 0
         end
 
         def find_availability
