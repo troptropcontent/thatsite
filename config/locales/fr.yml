@@ -52,3 +52,7 @@ fr:
   office:
     attributes:
       phone: Téléphone
+  todos:
+    basic_infos:
+      errors:
+        invalid_name: Ce nom est déja pris ou n'est pas valide
