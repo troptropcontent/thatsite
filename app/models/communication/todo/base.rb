@@ -4,7 +4,7 @@ module Communication::Todo
     class Base
         attr_reader :status, :available, :order, :name, :inputs
         def initialize(site)
-            @name = ""
+            @name = find_name
             @site = site
             @inputs = find_inputs
             @status = find_status
@@ -26,18 +26,26 @@ module Communication::Todo
         def model_name
             OpenStruct.new param_key: 'todo'
         end
+
+        def to_partial_path
+            self.class.name.gsub("::", "/").downcase
+        end
         
         private
 
         def find_status
             case avancement
             when 0
-                "to_do"
+               "not_started"
             when 0...1
                "in_progress" 
             when 1
                "done" 
             end
+        end
+
+        def find_name
+            self.class.name.demodulize.downcase
         end
 
         def avancement
