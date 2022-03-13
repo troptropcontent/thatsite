@@ -4,7 +4,6 @@ module Communication::Todo
     class Theme < Base
         def initialize(site)
             super
-            @name = "theme"
             @order = 2
         end
 

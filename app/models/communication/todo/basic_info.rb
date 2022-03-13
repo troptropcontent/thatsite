@@ -5,7 +5,6 @@ module Communication::Todo
 
         def initialize(site)
             super
-            @name = "basic_info"
             @order = 1
         end
 
