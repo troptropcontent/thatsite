@@ -1,0 +1,15 @@
+<%= turbo_frame_tag dom_id(basicinfo) do %>
+  <div class="container <%= basicinfo.status %>">
+    <% @site.errors.full_messages.each do |error| %>
+      <%= error%>
+    <% end %>
+    <%= form_with model: @site do |form| %>
+      <%= form.label 'name', "Enter your site name:" %>
+      <%= form.text_field 'name', value: basicinfo.inputs[:site_name]%>
+      <%= fields_for :turbo_stream do |turbo_stream_form| %>
+        <%= turbo_stream_form.hidden_field :klass, value: basicinfo.class.name  %>
+      <% end %>
+      <%= form.submit "Validé", disabled: basicinfo.status == "done" %>
+    <% end %>
+  </div>
+<% end %>
