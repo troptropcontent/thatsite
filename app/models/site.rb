@@ -7,4 +7,5 @@ class Site < ApplicationRecord
   has_many :pages
 
   validates :name, uniqueness: true
+  validates :name, format: { with: /\A[a-z-]+\z/ }
 end
