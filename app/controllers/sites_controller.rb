@@ -26,7 +26,7 @@ class SitesController < ApplicationController
         respond_to do |format|
             if @site.save
                 current_user.sites << @site
-                format.html { redirect_to edit_site_url(@site.name)  }
+                format.html { redirect_to edit_site_path(@site.name), format: :html  }
             else
                 updated_to_do = turbo_stream_params[:klass].constantize.new(@site)
                 format.turbo_stream { render turbo_stream: turbo_stream.replace(updated_to_do, partial: updated_to_do) }
