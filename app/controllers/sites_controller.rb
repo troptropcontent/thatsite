@@ -23,10 +23,11 @@ class SitesController < ApplicationController
     # POST member.thatsite.io/sites
     def create
         @site = Site.new(site_params)
+        
         respond_to do |format|
             if @site.save
                 current_user.sites << @site
-                format.html { redirect_to edit_site_path(@site.name), format: :html  }
+                format.any(:html, :turbo_stream) { redirect_to edit_site_url(@site.name)}
             else
                 updated_to_do = turbo_stream_params[:klass].constantize.new(@site)
                 format.turbo_stream { render turbo_stream: turbo_stream.replace(updated_to_do, partial: updated_to_do) }
