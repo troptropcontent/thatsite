@@ -5,13 +5,15 @@ class SitesController < ApplicationController
 
     # GET member.thatsite.io/sites/new
     def new
-        @site = current_user.sites.new() 
+        @site = current_user.sites.new()
+        @other_sites = current_user.sites.pluck(:name)
         @to_dos = Communication::Todo::Base.list(@site)
     end
 
     # GET member.thatsite.io/sites/:name/edit
     def edit
         @site = current_user.sites.find_by!(name: params[:name])
+        @other_sites = current_user.sites.where.not(id: @site.id).pluck(:name)
         @to_dos = Communication::Todo::Base.list(@site)
     end
 
