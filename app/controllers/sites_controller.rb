@@ -8,6 +8,7 @@ class SitesController < ApplicationController
         @site = current_user.sites.new()
         @other_sites = current_user.sites.pluck(:name)
         @to_dos = Communication::Todo::Base.list(@site)
+        render "form"
     end
 
     # GET member.thatsite.io/sites/:name/edit
@@ -15,6 +16,7 @@ class SitesController < ApplicationController
         @site = current_user.sites.find_by!(name: params[:name])
         @other_sites = current_user.sites.where.not(id: @site.id).pluck(:name)
         @to_dos = Communication::Todo::Base.list(@site)
+        render "form"
     end
 
     # PUT member.thatsite.io/sites/:name
