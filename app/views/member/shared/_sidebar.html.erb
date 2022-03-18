@@ -1,8 +1,8 @@
 <div class="sidebar flex-container flex-direction-column">
     <div data-controller="dropdown" class="dropdown">
-        <div class="dropdown-fixed">
+        <div class="dropdown-fixed p-l-m">
             <%= site.persisted? ? site.name : I18n.t('member.sidebar.default_site_name') %>
-            <button data-action="dropdown#toggleContent">
+            <button data-action="dropdown#toggleContent" class="p-r-m">
                 <%= inline_svg_tag "icons/chevron-down.svg" %>
             </button>
         </div>
@@ -15,7 +15,7 @@
                     <% end %>
                 </div>
             <% end %>
-            <div class="new-site flex-container">
+            <div class="new-site flex-container p-l-m p-r-m">
                 <%= I18n.t('member.sidebar.new_site') %>
                 <%= link_to new_site_path do %>
                     <%= inline_svg_tag "icons/plus.svg" %>
