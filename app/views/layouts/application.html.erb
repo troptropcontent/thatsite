@@ -12,7 +12,7 @@
   </head>
 
   <body>
-      <%= render "member/shared/sidebar"%>
+      <%= render "member/shared/sidebar", site: @site, other_sites: @other_sites%>
       <div class="main">
         <%= yield %>
       </div>

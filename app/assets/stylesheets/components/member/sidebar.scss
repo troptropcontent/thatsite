@@ -8,9 +8,23 @@
     background-color: #111; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
+    color: white;
 
-    div:nth-child(1) { 
-        color: white;
-        border-bottom: 2px solid white;
-    }
-}
+    .dropdown{
+        position: relative;
+
+        .dropdown-fixed {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid white;
+        }
+        
+        .dropdown-toggleable {
+            display: none;
+            position: absolute;
+            width: 160px;
+        }
+    
+        .show {display:block;}
+            }
+}   
