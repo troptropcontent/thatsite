@@ -12,9 +12,11 @@
   </head>
 
   <body>
-      <%= render "member/shared/sidebar", site: @site, other_sites: @other_sites%>
-      <div class="main">
-        <%= yield %>
+      <div class="flex-container">
+        <%= render "member/shared/sidebar", site: @site, other_sites: @other_sites%>
+        <div class="main">
+          <%= yield %>
+        </div>
       </div>
   </body>
 </html>
