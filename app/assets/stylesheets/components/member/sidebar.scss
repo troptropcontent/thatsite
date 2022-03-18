@@ -23,6 +23,10 @@
             display: none;
             position: absolute;
             width: 160px;
+
+            .other-sites{
+                border-bottom: 2px solid white; 
+            }
         }
     
         .show {display:block;}

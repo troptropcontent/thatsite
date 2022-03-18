@@ -1,23 +1,26 @@
 <div class="sidebar flex-container flex-direction-column">
-        <div data-controller="dropdown" class="dropdown">
-            <div class="dropdown-fixed">
-                <%= site.persisted? ? site.name : I18n.t('member.sidebar.default_site_name') %>
-                <button data-action="dropdown#toggleContent">
-                    <%= inline_svg_tag "icons/chevron-down.svg" %>
-                </button>
-            </div>
-            <div data-dropdown-target="content" id="dropdown-content" class="dropdown-toggleable">
-                <div class="other-sites flex-container flex-direction-column">
+    <div data-controller="dropdown" class="dropdown">
+        <div class="dropdown-fixed">
+            <%= site.persisted? ? site.name : I18n.t('member.sidebar.default_site_name') %>
+            <button data-action="dropdown#toggleContent">
+                <%= inline_svg_tag "icons/chevron-down.svg" %>
+            </button>
+        </div>
+        <div data-dropdown-target="content" id="dropdown-content" class="dropdown-toggleable">
+           
+            <% unless other_sites.empty? %>
+               <div class="other-sites flex-container flex-direction-column">
                     <% other_sites.each do |site_name| %>
-                      <%= link_to site_name, edit_site_path(site_name) %>
+                        <%= link_to site_name, edit_site_path(site_name) %>
                     <% end %>
                 </div>
-                <div class="new-site flex-container">
-                    <%= I18n.t('member.sidebar.new_site') %>
-                    <%= link_to new_site_path do %>
-                        <%= inline_svg_tag "icons/plus.svg" %>
-                    <% end %>
-                </div>
+            <% end %>
+            <div class="new-site flex-container">
+                <%= I18n.t('member.sidebar.new_site') %>
+                <%= link_to new_site_path do %>
+                    <%= inline_svg_tag "icons/plus.svg" %>
+                <% end %>
             </div>
         </div>
+    </div>
 </div>
