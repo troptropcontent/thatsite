@@ -10,6 +10,19 @@
     padding-top: 20px;
     color: white;
 
+    button {
+        background-color: transparent;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: white;
+    }
+
+    a, a:visited{
+        color:white;
+        text-decoration: none;
+      }
+
     .dropdown{
         position: relative;
 
