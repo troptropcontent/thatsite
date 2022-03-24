@@ -24,10 +24,21 @@
 	flex-direction: column;
 }
 
+/* font for all pages */ 
+
+body {
+    font-family: 'Rubik', sans-serif;
+  }
+
+h1 {
+    font-style: bold;
+}
+
 /* Style page content */
 .main {
     margin-left: 160px; /* Same as the width of the sidebar */
     padding: 0px 10px;
+    width: 100%;
   }
 
 /* padding */
