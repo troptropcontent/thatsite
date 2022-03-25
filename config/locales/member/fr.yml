@@ -4,3 +4,14 @@ fr:
     sidebar:
       default_site_name: thasite
       new_site: nouveau site
+    form:
+      basic_info:
+        title: Votre site
+        sub_title_not_done: Choisissez un nom pour votre site web, il sera ensuite disponible à l'addresse suivante nom-du-site.thatsite.io. Vous pourrez aussi utiliser un nom de domaine personnalisé.
+        sub_title_done: Votre site web sera disponible à l'addresse suivante %{site_name}.thatsite.io ou sur votre nom de domaine personnalisé.
+        form: 
+          inputs: 
+            site_name:
+              label_done: Votre nom de site.
+              label: Choisissez un nom pour votre site.
+            submit: Valider

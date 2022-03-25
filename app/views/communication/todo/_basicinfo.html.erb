@@ -1,15 +1,42 @@
 <%= turbo_frame_tag dom_id(basicinfo), target: '_top' do %>
-  <div class="container <%= basicinfo.status %> ">
-    <% @site.errors.full_messages.each do |error| %>
-      <%= error%>
-    <% end %>
-    <%= form_with model: @site do |form| %>
-      <%= form.label 'name', "Enter your site name:" %>
-      <%= form.text_field 'name', value: basicinfo.inputs[:site_name]%>
-      <%= fields_for :turbo_stream do |turbo_stream_form| %>
-        <%= turbo_stream_form.hidden_field :klass, value: basicinfo.class.name  %>
+  <div class="form-card">
+    <div>
+      <h3>
+        <%= I18n.t('member.form.basic_info.title')%>
+      </h3>
+      <p>
+        <% if @site.persisted? %>
+          <%= I18n.t('member.form.basic_info.sub_title_done', site_name: @site.name)%>
+        <% else %>
+          <%= I18n.t('member.form.basic_info.sub_title_not_done')%>
+        <% end %>
+      </p>
+    </div>
+    <div>
+        <%= form_with model: @site do |form| %>
+          <div class="inputs">
+            <h3>
+              <%= form.label 'name', I18n.t('member.form.basic_info.form.inputs.site_name.label')%>
+            </h3>
+            <%= form.text_field 'name', value: basicinfo.inputs[:site_name]%>
+          </div>
+          <div class="submit-area m-t-m">
+            <div>
+              <% @site.errors.full_messages.each do |error| %>
+                <%= error%>
+              <% end %>
+            </div>
+            <div>
+              <div>
+                <%= fields_for :turbo_stream do |turbo_stream_form| %>
+                  <%= turbo_stream_form.hidden_field :klass, value: basicinfo.class.name  %>
+                <% end %>
+                <%= form.submit I18n.t('member.form.basic_info.form.inputs.submit'), disabled: basicinfo.status == "done", class: "button" %>
+              </div>
+            </div>
+          </div>
       <% end %>
-      <%= form.submit "Validé", disabled: basicinfo.status == "done" %>
-    <% end %>
+    </div>
   </div>
 <% end %>
+
