@@ -1,2 +1,42 @@
-<h2 id=<%= dom_id(theme) %>>Future form for theme</h2>
-
+<%= turbo_frame_tag dom_id(theme)   do %>
+  <div class="form-card">
+    <div>
+      <h3>
+        <%= I18n.t('member.form.theme.title')%>
+      </h3>
+      <p>
+        <%= I18n.t('member.form.theme.sub_title')%>
+      </p>
+    </div>
+    <div>
+        <%= form_with model: @site do |form| %>
+          <div class="inputs">
+            <h3>
+                <%= form.label 'color_palette_id', I18n.t('member.form.theme.form.inputs.color_palette.label')%>
+            </h3>
+            <%= render partial: 'shared/rich_select', locals: {partial: 'shared/color_palette_option', items: @available_color_palettes}%>
+            <%= form.hidden_field 'color_palette_id', value: @site.color_palette_id %>
+            <h3>
+                <%= form.label 'font_pair_id', I18n.t('member.form.theme.form.inputs.font_pair.label')%>
+            </h3>
+            <%= form.hidden_field 'font_pair_id', value: @site.font_pair_id%>
+          </div>
+          <div class="submit-area m-t-m">
+            <div>
+              <% @site.errors.full_messages.each do |error| %>
+                <%= error%>
+              <% end %>
+            </div>
+            <div>
+              <div>
+                <%= fields_for :turbo_stream do |turbo_stream_form| %>
+                  <%= turbo_stream_form.hidden_field :klass, value: theme.class.name  %>
+                <% end %>
+                <%= form.submit I18n.t('member.form.basic_info.form.inputs.submit'), disabled: !theme.available, class: "button" %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

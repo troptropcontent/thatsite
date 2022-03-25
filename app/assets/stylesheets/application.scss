@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ /* flex display */ 
+
 .flex-container {
 	display: flex;
 	flex-direction: row;
@@ -22,6 +24,10 @@
 
 .flex-direction-column {
 	flex-direction: column;
+}
+
+.f-1 {
+    flex: 1;
 }
 
 /* font for all pages */ 
@@ -47,4 +53,26 @@ h1 {
 }
 .p-l-m {
     padding-left: 8px;
+}
+
+.p-m {
+    padding: 8px;
+}
+
+/* margin */
+
+.m-t-m {
+    margin-top: 8px;
+}
+
+.m-b-m {
+    margin-bottom: 8px;
+}
+
+.m-l-m {
+    margin-left: 8px;
+}
+
+.m-r-m {
+    margin-right: 8px;
 }

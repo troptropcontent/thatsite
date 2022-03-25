@@ -7,6 +7,7 @@ class SitesController < ApplicationController
     def new
         @site = current_user.sites.new()
         @other_sites = current_user.sites.pluck(:name)
+        @available_color_palettes = ColorPalette.all
         @to_dos = Communication::Todo::Base.list(@site)
         render "form"
     end
@@ -15,6 +16,7 @@ class SitesController < ApplicationController
     def edit
         @site = current_user.sites.find_by!(name: params[:name])
         @other_sites = current_user.sites.where.not(id: @site.id).pluck(:name)
+        @available_color_palettes = ColorPalette.where.not(id: @site.color_palette_id)
         @to_dos = Communication::Todo::Base.list(@site)
         render "form"
     end

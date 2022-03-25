@@ -15,3 +15,13 @@ fr:
               label_done: Votre nom de site.
               label: Choisissez un nom pour votre site.
             submit: Valider
+      theme:
+        title: Votre style
+        sub_title: Choisissez une palette de couleur et une association de police pour rendre votre site original et unique.
+        form: 
+          inputs: 
+            color_palette: 
+              label: Choisissez une palette de couleur.
+            font_pair: 
+              label: Choisissez une association de police.
+            submit: Valider
