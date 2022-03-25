@@ -1,0 +1,16 @@
+<div class="rich-select">
+   <div class="selected flex-container m-b-m">
+      <div class="selected-option">
+         <%= render partial: partial, locals: {item: items.first} %>
+      </div>      
+   </div>
+   <div class="select-options">
+      <ul>
+         <% items.each do |item| %>
+            <li>
+               <%= render partial: partial, locals: {item: item} %>
+            </li>
+         <% end %>
+      </ul>
+   </div>
+</div>
