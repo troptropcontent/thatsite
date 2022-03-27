@@ -31,7 +31,7 @@
                 <%= fields_for :turbo_stream do |turbo_stream_form| %>
                   <%= turbo_stream_form.hidden_field :klass, value: basicinfo.class.name  %>
                 <% end %>
-                <%= form.submit I18n.t('member.form.basic_info.form.inputs.submit'), disabled: basicinfo.status == "done", class: "button" %>
+                <%= form.submit I18n.t('member.form.basic_info.form.inputs.submit'), disabled: !basicinfo.available, class: "button" %>
               </div>
             </div>
           </div>
