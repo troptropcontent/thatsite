@@ -9,8 +9,8 @@
    </div>
    <div class="options hidden brd p-m" data-rich-select-target="options">
       <ul class="no-bullets">
-         <% items.each do |item| %>
-            <li class="m-b-m cursor-pointer brd p-m" data-action="click->rich-select#selectOption" data-rich-select-id-param=<%=item.id%> >
+         <% items.each_with_object(items.length).with_index do |(item, length), index| %>
+            <li class="<%= 'm-b-m ' unless length == index+1 %>cursor-pointer brd p-m" data-action="click->rich-select#selectOption" data-rich-select-id-param=<%=item.id%> >
                <%= render partial: partial, locals: {item: item} %>
             </li>
          <% end %>
