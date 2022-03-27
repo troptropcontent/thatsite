@@ -30,6 +30,10 @@
     flex: 1;
 }
 
+.align-center {
+    align-items: center;
+}
+
 /* font for all pages */ 
 
 body {
@@ -75,4 +79,44 @@ h1 {
 
 .m-r-m {
     margin-right: 8px;
+}
+
+/* list */
+
+ul.no-bullets{
+  list-style-type: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+/* width */
+
+.full-width{
+  width: 100%;
+}
+
+
+/* cursor */
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+/* display */
+
+.d-block {
+    display: block;
+}
+
+/* hidden stuff for dropdowns or modals */
+
+.hidden {
+    display: none;
+    position: absolute;
+}
+
+/* border */
+
+.brd {
+    border: 1px solid black;
 }
