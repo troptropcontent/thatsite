@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id(theme)   do %>
+<%= turbo_frame_tag dom_id(theme) do %>
   <div class="form-card">
     <div>
       <h3>
@@ -14,12 +14,27 @@
             <h3>
                 <%= form.label 'color_palette_id', I18n.t('member.form.theme.form.inputs.color_palette.label')%>
             </h3>
-            <%= render partial: 'shared/rich_select', locals: {partial: 'shared/color_palette_option', items: @available_color_palettes}%>
-            <%= form.hidden_field 'color_palette_id', value: @site.color_palette_id %>
+            <%= render partial: 'shared/rich_select',
+                locals: {
+                    partial: 'shared/color_palette_option',
+                    items: @available_color_palettes,
+                    item: @site.color_palette,
+                    param: 'color_palette_id',
+                    form_with: 'site'
+                }
+            %>
             <h3>
                 <%= form.label 'font_pair_id', I18n.t('member.form.theme.form.inputs.font_pair.label')%>
             </h3>
-            <%= form.hidden_field 'font_pair_id', value: @site.font_pair_id%>
+            <%= render partial: 'shared/rich_select',
+                locals: {
+                    partial: 'shared/font_pair_option',
+                    items: @available_font_pairs,
+                    item: @site.font_pair,
+                    param: 'font_pair_id',
+                    form_with: 'site'
+                }
+            %>
           </div>
           <div class="submit-area m-t-m">
             <div>
