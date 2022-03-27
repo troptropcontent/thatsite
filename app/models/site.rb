@@ -8,4 +8,8 @@ class Site < ApplicationRecord
 
   validates :name, uniqueness: true
   validates :name, format: { with: /\A[a-z-]+\z/ }
+
+  def to_param 
+    name
+  end
 end
