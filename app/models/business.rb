@@ -2,5 +2,5 @@
 
 class Business < ApplicationRecord
   has_many :offices
-  has_many :sites
+  belongs_to :site
 end

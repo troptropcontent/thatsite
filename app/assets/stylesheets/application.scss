@@ -1,0 +1,134 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* variables */
+$m: 8px;
+$l: 16px;
+
+/* flex display */ 
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-direction-column {
+	flex-direction: column;
+}
+
+.f-1 {
+    flex: 1;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* font for all pages */ 
+
+body {
+    font-family: 'Rubik', sans-serif;
+  }
+
+h1 {
+    font-style: bold;
+}
+
+/* Style page content */
+.main {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+    width: 100%;
+  }
+
+/* padding */
+.p-r-m {
+    padding-right: $m;
+}
+.p-l-m {
+    padding-left: $m;
+}
+
+.p-m {
+    padding: $m;
+}
+
+.p-l {
+    padding: $l;
+}
+
+/* margin */
+
+.m-t-m {
+    margin-top: $m;
+}
+
+.m-b-m {
+    margin-bottom: $m;
+}
+
+.m-l-m {
+    margin-left: $m;
+}
+
+.m-r-m {
+    margin-right: $m;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/* list */
+
+ul.no-bullets{
+  list-style-type: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+/* width */
+
+.full-width{
+  width: 100%;
+}
+
+
+/* cursor */
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+/* display */
+
+.d-block {
+    display: block;
+}
+
+/* hidden stuff for dropdowns or modals */
+
+.hidden {
+    display: none;
+    position: absolute;
+}
+
+/* border */
+
+.brd {
+    border: 1px solid black;
+}

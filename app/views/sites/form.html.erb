@@ -1,0 +1,6 @@
+<%= turbo_stream_from "todos" %>
+<%= turbo_frame_tag "todos" do %>
+  <% @to_dos.each do |todo| %>
+    <%= render partial: todo %>
+  <% end %>
+<% end %>

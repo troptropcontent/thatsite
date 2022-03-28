@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   constraints subdomain: "member" do
     get "/" => "dashboard#show"
     get '/:name', to: 'dashboard#show'
-    resources :sites, only: :new
+    resources :sites, param: :name, only: [:new, :edit, :create, :update]
   end
   root 'page#show'
 

@@ -1,0 +1,47 @@
+.sidebar {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    color: white;
+
+    button {
+        background-color: transparent;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: white;
+    }
+
+    a, a:visited{
+        color:white;
+        text-decoration: none;
+      }
+
+    .dropdown{
+        position: relative;
+
+        .dropdown-fixed {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid white;
+        }
+        
+        .dropdown-toggleable {
+            display: none;
+            position: absolute;
+            width: 160px;
+
+            .other-sites{
+                border-bottom: 2px solid white; 
+            }
+        }
+    
+        .show {display:block;}
+            }
+}   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_165830) do
+ActiveRecord::Schema.define(version: 2022_03_08_163512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,8 @@ ActiveRecord::Schema.define(version: 2022_03_05_165830) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "businesses_users", id: false, force: :cascade do |t|
-    t.bigint "business_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["business_id"], name: "index_businesses_users_on_business_id"
-    t.index ["user_id"], name: "index_businesses_users_on_user_id"
+    t.bigint "site_id"
+    t.index ["site_id"], name: "index_businesses_on_site_id"
   end
 
   create_table "color_palettes", force: :cascade do |t|
@@ -91,16 +86,21 @@ ActiveRecord::Schema.define(version: 2022_03_05_165830) do
   end
 
   create_table "sites", force: :cascade do |t|
-    t.bigint "color_palette_id", null: false
-    t.bigint "font_pair_id", null: false
-    t.bigint "business_id", null: false
+    t.bigint "color_palette_id"
+    t.bigint "font_pair_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
-    t.index ["business_id"], name: "index_sites_on_business_id"
     t.index ["color_palette_id"], name: "index_sites_on_color_palette_id"
     t.index ["font_pair_id"], name: "index_sites_on_font_pair_id"
     t.index ["name"], name: "index_sites_on_name", unique: true
+  end
+
+  create_table "sites_users", id: false, force: :cascade do |t|
+    t.bigint "site_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["site_id"], name: "index_sites_users_on_site_id"
+    t.index ["user_id"], name: "index_sites_users_on_user_id"
   end
 
   create_table "team_members", force: :cascade do |t|
@@ -127,9 +127,9 @@ ActiveRecord::Schema.define(version: 2022_03_05_165830) do
   end
 
   add_foreign_key "business_hours", "offices"
+  add_foreign_key "businesses", "sites"
   add_foreign_key "offices", "businesses"
   add_foreign_key "sections", "pages"
-  add_foreign_key "sites", "businesses"
   add_foreign_key "sites", "color_palettes"
   add_foreign_key "sites", "font_pairs"
   add_foreign_key "team_members", "businesses"

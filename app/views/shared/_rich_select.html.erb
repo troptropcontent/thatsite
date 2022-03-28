@@ -1,0 +1,20 @@
+<div class="rich-select" data-controller="rich-select">
+   <div class="m-b-m">
+      <div class="flex-container align-center cursor-pointer brd p-m">
+         <div class="selected-option full-width" data-rich-select-target="selected" data-action="click->rich-select#toggleOptions">
+            <%= render partial: partial, locals: {item: item || items.first} %>
+         </div>      
+         <%= inline_svg_tag "icons/chevron-down.svg" %>
+      </div>
+   </div>
+   <div class="options hidden brd p-m" data-rich-select-target="options">
+      <ul class="no-bullets">
+         <% items.each do |item| %>
+            <li class="cursor-pointer option brd p-m" data-action="click->rich-select#selectOption" data-rich-select-id-param=<%=item.id%> >
+               <%= render partial: partial, locals: {item: item} %>
+            </li>
+         <% end %>
+         <%= hidden_field_tag "#{form_with}[#{param}]", items.first.id, data: { "rich-select-target" => "field"}%>
+      </ul>
+   </div>
+</div>
