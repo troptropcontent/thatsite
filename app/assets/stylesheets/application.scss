@@ -14,7 +14,11 @@
  *= require_self
  */
 
- /* flex display */ 
+/* variables */
+$m: 8px;
+$l: 16px;
+
+/* flex display */ 
 
 .flex-container {
 	display: flex;
@@ -53,32 +57,40 @@ h1 {
 
 /* padding */
 .p-r-m {
-    padding-right: 8px;
+    padding-right: $m;
 }
 .p-l-m {
-    padding-left: 8px;
+    padding-left: $m;
 }
 
 .p-m {
-    padding: 8px;
+    padding: $m;
+}
+
+.p-l {
+    padding: $l;
 }
 
 /* margin */
 
 .m-t-m {
-    margin-top: 8px;
+    margin-top: $m;
 }
 
 .m-b-m {
-    margin-bottom: 8px;
+    margin-bottom: $m;
 }
 
 .m-l-m {
-    margin-left: 8px;
+    margin-left: $m;
 }
 
 .m-r-m {
-    margin-right: 8px;
+    margin-right: $m;
+}
+
+.no-margin {
+    margin: 0;
 }
 
 /* list */
