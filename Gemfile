@@ -57,6 +57,8 @@ gem 'devise'
 #svg
 gem 'inline_svg'
 
+#graphql
+gem 'graphql'
 
 
 group :development, :test do
@@ -89,3 +91,4 @@ end
 
 
 
+gem "graphiql-rails", group: :development
