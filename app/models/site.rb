@@ -5,6 +5,7 @@ class Site < ApplicationRecord
   has_many :users, through: :sites_user
   has_one :business
   has_many :pages
+  has_many :texts
 
   validates :name, uniqueness: true
   validates :name, format: { with: /\A[a-z-]+\z/ }
