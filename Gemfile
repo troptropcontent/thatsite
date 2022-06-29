@@ -92,3 +92,5 @@ end
 
 
 gem "graphiql-rails", group: :development
+
+gem "service_actor-rails", "~> 1.0"
