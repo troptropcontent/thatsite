@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: sites
+#
+#  id               :bigint           not null, primary key
+#  color_palette_id :bigint
+#  font_pair_id     :bigint
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  name             :string           not null
+#
 class Site < ApplicationRecord
   belongs_to :color_palette, optional: true
   belongs_to :font_pair, optional: true

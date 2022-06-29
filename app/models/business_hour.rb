@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: business_hours
+#
+#  id         :bigint           not null, primary key
+#  office_id  :bigint           not null
+#  weekday    :integer          not null
+#  opens_at   :time             not null
+#  closes_at  :time             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class BusinessHour < ApplicationRecord
   belongs_to :office
   enum weekday: {
