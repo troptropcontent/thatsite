@@ -5,22 +5,24 @@
 # Table name: pages
 #
 #  id         :bigint           not null, primary key
-#  type       :string
-#  site_id    :bigint
+#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  name       :string
+#  site_id    :bigint
+#
+# Indexes
+#
+#  index_pages_on_site_id  (site_id)
 #
 class Page < ApplicationRecord
   belongs_to :site
   validates :name, presence: true
-  has_many :sections
-  has_one :dataset
-  
+  has_many :sections, dependent: :destroy
+  has_one :dataset, dependent: :destroy
+
   DEFAULT_SECTIONS = %w[].freeze
 
   def default?
     false
   end
-
 end
