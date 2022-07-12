@@ -10,6 +10,14 @@
 #  updated_at :datetime         not null
 #  site_id    :bigint
 #
+# Indexes
+#
+#  index_businesses_on_site_id  (site_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (site_id => sites.id)
+#
 class Business < ApplicationRecord
   has_many :offices
   belongs_to :site

@@ -8,7 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Dataset < ApplicationRecord
+class Context < ApplicationRecord
   belongs_to :page
   has_one_attached :json
 

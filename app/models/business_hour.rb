@@ -5,12 +5,20 @@
 # Table name: business_hours
 #
 #  id         :bigint           not null, primary key
-#  office_id  :bigint           not null
-#  weekday    :integer          not null
-#  opens_at   :time             not null
 #  closes_at  :time             not null
+#  opens_at   :time             not null
+#  weekday    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  office_id  :bigint           not null
+#
+# Indexes
+#
+#  index_business_hours_on_office_id  (office_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (office_id => offices.id)
 #
 class BusinessHour < ApplicationRecord
   belongs_to :office

@@ -3,15 +3,23 @@
 # Table name: offices
 #
 #  id                 :bigint           not null, primary key
-#  business_id        :bigint           not null
-#  address_full       :string           not null
 #  address_complement :string
+#  address_full       :string           not null
 #  address_zipcode    :string           not null
 #  addresse_city      :string           not null
 #  name               :string
+#  phone              :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  phone              :string
+#  business_id        :bigint           not null
+#
+# Indexes
+#
+#  index_offices_on_business_id  (business_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (business_id => businesses.id)
 #
 class Office < ApplicationRecord
   belongs_to :business

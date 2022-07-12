@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_25_123728) do
+ActiveRecord::Schema.define(version: 2022_07_11_205825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,12 +71,12 @@ ActiveRecord::Schema.define(version: 2022_06_25_123728) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "datasets", force: :cascade do |t|
+  create_table "contexts", force: :cascade do |t|
     t.bigint "page_id", null: false
     t.text "query"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["page_id"], name: "index_datasets_on_page_id"
+    t.index ["page_id"], name: "index_contexts_on_page_id"
   end
 
   create_table "font_pairs", force: :cascade do |t|
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 2022_06_25_123728) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string "type"
     t.bigint "site_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -175,7 +174,7 @@ ActiveRecord::Schema.define(version: 2022_06_25_123728) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "business_hours", "offices"
   add_foreign_key "businesses", "sites"
-  add_foreign_key "datasets", "pages"
+  add_foreign_key "contexts", "pages"
   add_foreign_key "offices", "businesses"
   add_foreign_key "sections", "pages"
   add_foreign_key "sites", "color_palettes"
