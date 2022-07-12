@@ -19,6 +19,6 @@
 #  fk_rails_...  (site_id => sites.id)
 #
 class Business < ApplicationRecord
-  has_many :offices
+  has_many :offices, dependent: :destroy
   belongs_to :site
 end

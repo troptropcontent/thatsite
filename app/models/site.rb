@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: sites
@@ -23,16 +25,16 @@
 class Site < ApplicationRecord
   belongs_to :color_palette, optional: true
   belongs_to :font_pair, optional: true
-  has_many :sites_user
+  has_many :sites_user, dependent: :destroy
   has_many :users, through: :sites_user
-  has_one :business
-  has_many :pages
-  has_many :texts
+  has_one :business, dependent: :destroy
+  has_many :pages, dependent: :destroy
+  has_many :texts, dependent: :destroy
 
   validates :name, uniqueness: true
   validates :name, format: { with: /\A[a-z-]+\z/ }
 
-  def to_param 
+  def to_param
     name
   end
 end

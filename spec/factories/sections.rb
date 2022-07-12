@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: sections
@@ -21,7 +23,7 @@
 FactoryBot.define do
   factory :section do
     page { Page.last || FactoryBot.create(:home) }
-    content { "Get the visibility you deserve" }
-    name { "catch_phrase" }
+    content { 'Get the visibility you deserve' }
+    name { 'catch_phrase' }
   end
 end

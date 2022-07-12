@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -22,7 +24,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :sites_user
+  has_many :sites_user, dependent: :destroy
   has_many :sites, through: :sites_user
   has_many :business, through: :sites
 end

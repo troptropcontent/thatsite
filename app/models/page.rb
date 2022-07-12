@@ -17,5 +17,12 @@
 class Page < ApplicationRecord
   belongs_to :site
   validates :name, presence: true
-  has_one :context
+  has_many :sections, dependent: :destroy
+  has_one :dataset, dependent: :destroy
+
+  DEFAULT_SECTIONS = %w[].freeze
+
+  def default?
+    false
+  end
 end

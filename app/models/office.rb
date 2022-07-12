@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: offices
@@ -23,5 +25,5 @@
 #
 class Office < ApplicationRecord
   belongs_to :business
-  has_many :business_hours
+  has_many :business_hours, dependent: :destroy
 end
