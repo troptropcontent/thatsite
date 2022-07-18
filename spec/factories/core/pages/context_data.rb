@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: core_pages_context_data
+# Table name: context_data
 #
 #  id          :bigint           not null, primary key
 #  holder_type :string           not null
@@ -13,8 +13,8 @@
 #
 # Indexes
 #
-#  index_core_pages_context_data_on_context_id  (context_id)
-#  index_core_pages_context_data_on_holder      (holder_type,holder_id)
+#  index_context_data_on_context_id  (context_id)
+#  index_context_data_on_holder      (holder_type,holder_id)
 #
 # Foreign Keys
 #
