@@ -5,8 +5,8 @@
 # Table name: texts
 #
 #  id         :bigint           not null, primary key
-#  content    :text
-#  name       :string
+#  content    :text             not null
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  site_id    :bigint           not null
@@ -19,9 +19,12 @@
 #
 #  fk_rails_...  (site_id => sites.id)
 #
-FactoryBot.define do
-  factory :text do
-    site { nil }
-    content { 'MyText' }
+module Core
+  FactoryBot.define do
+    factory :text, class: 'Core::Text' do
+      site { Site.last || FactoryBot.create(:site) }
+      content { 'Qui sommes nous ?' }
+      name { 'who_we_are' }
+    end
   end
 end
