@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: datasets
+# Table name: contexts
 #
 #  id         :bigint           not null, primary key
 #  query      :text
@@ -12,7 +12,7 @@
 #
 # Indexes
 #
-#  index_datasets_on_page_id  (page_id)
+#  index_contexts_on_page_id  (page_id)
 #
 # Foreign Keys
 #
