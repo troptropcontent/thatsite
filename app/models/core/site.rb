@@ -30,7 +30,7 @@ module Core
     has_and_belongs_to_many :users
     # rubocop:enable Rails/HasAndBelongsToMany
     has_one :business, dependent: :destroy
-    has_many :pages, dependent: :destroy
+    has_many :pages, class_name: 'Core::Pages::Page', dependent: :destroy
     has_many :texts, class_name: 'Core::Text', dependent: :destroy
 
     validates :name, uniqueness: true
