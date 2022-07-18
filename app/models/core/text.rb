@@ -5,8 +5,8 @@
 # Table name: texts
 #
 #  id         :bigint           not null, primary key
-#  content    :text
-#  name       :string
+#  content    :text             not null
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  site_id    :bigint           not null
@@ -19,8 +19,10 @@
 #
 #  fk_rails_...  (site_id => sites.id)
 #
-require 'rails_helper'
-
-RSpec.describe Text, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+module Core
+  class Text < ApplicationRecord
+    belongs_to :site
+    validates :name, presence: true
+    validates :content, presence: true
+  end
 end

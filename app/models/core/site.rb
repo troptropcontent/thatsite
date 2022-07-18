@@ -31,7 +31,7 @@ module Core
     # rubocop:enable Rails/HasAndBelongsToMany
     has_one :business, dependent: :destroy
     has_many :pages, dependent: :destroy
-    has_many :texts, dependent: :destroy
+    has_many :texts, class_name: 'Core::Text', dependent: :destroy
 
     validates :name, uniqueness: true
     validates :name, format: { with: /\A[a-z-]+\z/ }
