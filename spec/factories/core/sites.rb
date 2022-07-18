@@ -22,10 +22,12 @@
 #  fk_rails_...  (color_palette_id => color_palettes.id)
 #  fk_rails_...  (font_pair_id => font_pairs.id)
 #
-FactoryBot.define do
-  factory :site do
-    name { 'test' }
-    color_palette { ColorPalette.last || FactoryBot.create(:color_palette) }
-    font_pair { FontPair.last || FactoryBot.create(:font_pair) }
+module Core
+  FactoryBot.define do
+    factory :site, class: 'Core::Site' do
+      name { 'test' }
+      color_palette { ColorPalette.last || FactoryBot.create(:color_palette) }
+      font_pair { FontPair.last || FactoryBot.create(:font_pair) }
+    end
   end
 end
