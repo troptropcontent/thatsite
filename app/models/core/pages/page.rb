@@ -14,15 +14,9 @@
 #
 #  index_pages_on_site_id  (site_id)
 #
-class Page < ApplicationRecord
-  belongs_to :site
-  validates :name, presence: true
-  has_many :sections, dependent: :destroy
-  has_one :dataset, dependent: :destroy
-
-  DEFAULT_SECTIONS = %w[].freeze
-
-  def default?
-    false
+module Core::Pages
+  class Page < ApplicationRecord
+    belongs_to :site
+    validates :name, presence: true
   end
 end
