@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_18_203157) do
+ActiveRecord::Schema.define(version: 2022_07_18_205009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 2022_07_18_203157) do
     t.string "fifth"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "context_data", force: :cascade do |t|
+    t.string "holder_type", null: false
+    t.bigint "holder_id", null: false
+    t.bigint "context_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["context_id"], name: "index_context_data_on_context_id"
+    t.index ["holder_type", "holder_id"], name: "index_context_data_on_holder"
   end
 
   create_table "contexts", force: :cascade do |t|
@@ -174,6 +184,7 @@ ActiveRecord::Schema.define(version: 2022_07_18_203157) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "business_hours", "offices"
   add_foreign_key "businesses", "sites"
+  add_foreign_key "context_data", "contexts"
   add_foreign_key "contexts", "pages"
   add_foreign_key "offices", "businesses"
   add_foreign_key "sections", "pages"
