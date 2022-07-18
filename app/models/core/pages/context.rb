@@ -5,7 +5,7 @@
 # Table name: contexts
 #
 #  id         :bigint           not null, primary key
-#  query      :text
+#  query      :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  page_id    :bigint           not null
@@ -18,11 +18,10 @@
 #
 #  fk_rails_...  (page_id => pages.id)
 #
-class Context < ApplicationRecord
-  belongs_to :page
-  has_one_attached :json
-
-  def reload_json!
-    DatasetJsonReloader.new(self).reload!
+module Core::Pages
+  class Context < ApplicationRecord
+    belongs_to :page
+    has_one_attached :json
+    validates :query, presence: true
   end
 end
