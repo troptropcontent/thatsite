@@ -21,7 +21,7 @@
 #
 module Core
   class Text < ApplicationRecord
-    belongs_to :site
+    belongs_to :site, class_name: 'Core::Site'
     validates :name, presence: true
     validates :content, presence: true
   end

@@ -16,7 +16,7 @@
 
 module Core::Style
   FactoryBot.define do
-    factory :font_pair do
+    factory :font_pair, class: 'Core::Style::FontPair' do
       link_tag_href { 'https://fonts.googleapis.com/css2?family=Commissioner:wght@300&family=Fraunces&display=swap' }
       primary { 'Fraunces' }
       primary_backup { 'serif' }

@@ -5,7 +5,7 @@
 # Table name: businesses
 #
 #  id         :bigint           not null, primary key
-#  name       :string
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  site_id    :bigint
@@ -18,8 +18,11 @@
 #
 #  fk_rails_...  (site_id => sites.id)
 #
-FactoryBot.define do
-  factory :business do
-    name { 'MyCompany' }
+module Activity
+  FactoryBot.define do
+    factory :business, class: 'Activity::Business' do
+      name { 'MyCompany' }
+      site { Core::Site.last || create(:site) }
+    end
   end
 end

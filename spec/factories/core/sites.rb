@@ -26,8 +26,8 @@ module Core
   FactoryBot.define do
     factory :site, class: 'Core::Site' do
       name { 'test' }
-      color_palette { ColorPalette.last || FactoryBot.create(:color_palette) }
-      font_pair { FontPair.last || FactoryBot.create(:font_pair) }
+      color_palette { Core::Style::ColorPalette.last || FactoryBot.create(:color_palette) }
+      font_pair { Core::Style::FontPair.last || FactoryBot.create(:font_pair) }
     end
   end
 end

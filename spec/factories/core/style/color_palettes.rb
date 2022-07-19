@@ -15,7 +15,7 @@
 #
 module Core::Style
   FactoryBot.define do
-    factory :color_palette do
+    factory :color_palette, class: 'Core::Style::ColorPalette' do
       first { 'e63946' }
       second { 'f1faee' }
       third { 'a8dadc' }
