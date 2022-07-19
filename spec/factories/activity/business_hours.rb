@@ -20,11 +20,13 @@
 #
 #  fk_rails_...  (office_id => offices.id)
 #
-FactoryBot.define do
-  factory :business_hour do
-    office { Office.last || FactoryBot.create(:office) }
-    weekday { 1 }
-    opens_at { '2022-01-25 09:00:00' }
-    closes_at { '2022-01-25 20:00:00' }
+module Activity
+  FactoryBot.define do
+    factory :business_hour, class: 'Activity::BusinessHour' do
+      office { Office.last || FactoryBot.create(:office) }
+      weekday { 1 }
+      opens_at { '2022-01-25 09:00:00' }
+      closes_at { '2022-01-25 20:00:00' }
+    end
   end
 end
