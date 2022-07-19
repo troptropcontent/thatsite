@@ -5,7 +5,7 @@
 # Table name: businesses
 #
 #  id         :bigint           not null, primary key
-#  name       :string
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  site_id    :bigint
@@ -18,7 +18,10 @@
 #
 #  fk_rails_...  (site_id => sites.id)
 #
-class Business < ApplicationRecord
-  has_many :offices, dependent: :destroy
-  belongs_to :site
+module Activity
+  class Business < ApplicationRecord
+    has_many :offices, dependent: :destroy
+    belongs_to :site, class_name: 'Core::Site'
+    validates :name, presence: true
+  end
 end
