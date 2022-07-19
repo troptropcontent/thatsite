@@ -21,6 +21,14 @@
 #
 #  fk_rails_...  (business_id => businesses.id)
 #
-class TeamMember < ApplicationRecord
-  belongs_to :business
+module Activity
+  FactoryBot.define do
+    factory :team_member, class: 'Activity::TeamMember' do
+      first_name { 'Tom' }
+      last_name { 'Ecrepont' }
+      role { 'BackEnd Engineer' }
+      email { nil }
+      business { Business.last || FactoryBot.create(:business) }
+    end
+  end
 end

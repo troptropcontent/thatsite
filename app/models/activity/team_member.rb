@@ -21,12 +21,11 @@
 #
 #  fk_rails_...  (business_id => businesses.id)
 #
-FactoryBot.define do
-  factory :team_member do
-    first_name { 'Tom' }
-    last_name { 'Ecrepont' }
-    role { 'BackEnd Engineer' }
-    email { nil }
-    business { Business.last || FactoryBot.create(:business) }
+module Activity
+  class TeamMember < ApplicationRecord
+    belongs_to :business
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :role, presence: true
   end
 end
