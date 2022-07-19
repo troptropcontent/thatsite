@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_19_153245) do
+ActiveRecord::Schema.define(version: 2022_07_19_194819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,16 @@ ActiveRecord::Schema.define(version: 2022_07_19_153245) do
     t.index ["page_id"], name: "index_contexts_on_page_id"
   end
 
+  create_table "descriptions", force: :cascade do |t|
+    t.string "content", null: false
+    t.string "name", null: false
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id", "name"], name: "index_descriptions_on_business_id_and_name", unique: true
+    t.index ["business_id"], name: "index_descriptions_on_business_id"
+  end
+
   create_table "font_pairs", force: :cascade do |t|
     t.string "link_tag_href"
     t.string "primary"
@@ -119,16 +129,6 @@ ActiveRecord::Schema.define(version: 2022_07_19_153245) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.index ["site_id"], name: "index_pages_on_site_id"
-  end
-
-  create_table "sections", force: :cascade do |t|
-    t.bigint "page_id", null: false
-    t.string "content"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["page_id", "name"], name: "index_sections_on_page_id_and_name", unique: true
-    t.index ["page_id"], name: "index_sections_on_page_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -187,8 +187,8 @@ ActiveRecord::Schema.define(version: 2022_07_19_153245) do
   add_foreign_key "businesses", "sites"
   add_foreign_key "context_data", "contexts"
   add_foreign_key "contexts", "pages"
+  add_foreign_key "descriptions", "businesses"
   add_foreign_key "offices", "businesses"
-  add_foreign_key "sections", "pages"
   add_foreign_key "sites", "color_palettes"
   add_foreign_key "sites", "font_pairs"
   add_foreign_key "team_members", "businesses"
