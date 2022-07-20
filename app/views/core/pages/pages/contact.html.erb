@@ -1,0 +1,25 @@
+<div class="banner b-first c-second">
+  <h1><%= @content["banner_title"] %></h1>
+</div>
+<div class="banner">
+  <div class="grid">
+    <div class="padding-16 border">
+        <%= render "shared/contact_form", content: @content %>
+    </div>
+    <div>
+        <h3><%= @content["offices_title"] %></h1>
+        <% @site.business.offices.each do |office| %>
+        <div>
+          <p><%= office.address_full %></p>
+          <p><%= office.address_complement  %></p>
+          <p><%= "#{office.address_zipcode}, #{office.addresse_city}" %></p>
+          <p><%= "#{@content["telephone"]}: #{office.phone}" %></p>
+          <h3><%= @content["business_hours"] %></h1>
+          <% BusinessHourFormater.new(office).call.each do |string| %>
+            <p><%= string %></p>
+          <% end %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -15,3 +15,10 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
+Style/ClassAndModuleChildren:
+  Enabled: false
