@@ -23,8 +23,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_many :sites_user, dependent: :destroy
-  has_many :sites, through: :sites_user
+  # rubocop:disable Rails/HasAndBelongsToMany
+  has_and_belongs_to_many :sites, dependent: :destroy, class_name: 'Core::Site'
+  # rubocop:enable Rails/HasAndBelongsToMany
   has_many :business, through: :sites
 end
