@@ -35,5 +35,6 @@ module Core
 
     validates :name, uniqueness: true
     validates :name, format: { with: /\A[a-z-]+\z/ }
+    validates :users, presence: true
   end
 end
